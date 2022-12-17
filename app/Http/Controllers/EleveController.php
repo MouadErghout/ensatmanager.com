@@ -75,6 +75,7 @@ class EleveController extends Controller
      * @param  \App\Models\Eleve  $eleve
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
+<<<<<<< Updated upstream
     public function show(String $code)
     {
         $E = Eleve::firstWhere('code','=',$code);
@@ -82,6 +83,17 @@ class EleveController extends Controller
             'User'=>User::find($E->user_id),
             'Notes'=>Note::where('eleve_code','=',$E->code),
             'Moyenne'=>Moyenne::firstWhere('eleve_code','=',$E->code)]);
+=======
+    public function show(int $id)
+    {
+        $E = Eleve::find($id);
+        return view('Eleves.show',['Eleve'=>$E,
+            'User'=>$E->User(),
+            'Notes'=>$E->Note(),
+            'Moyenne'=>$E->Moyenne()]);
+
+        /**/
+>>>>>>> Stashed changes
     }
 
     /**

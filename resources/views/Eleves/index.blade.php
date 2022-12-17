@@ -16,9 +16,15 @@
                 <td>{{$E->prenom}}</td>
                 <td>{{$E->filiere_code}}</td>
                 <td>{{$E->niveau}}</td>
+<<<<<<< Updated upstream
                 <td><a href="/Eleve/{{$E->code}}/edit"><strong> Modifier </strong></a></td>
                 <td><a href="/Eleve/{{$E->code}}"><strong> Supprimer </strong></a></td>
                 <td><a href="/Eleve/{{$E->code}}"><strong> Plus </strong></a></td>
+=======
+                <td><a href="/Eleve/{{$E->id}}/edit"><strong> Modifier </strong></a></td>
+                <td><a href="/Eleve/{{$E->id}}"><strong> Supprimer </strong></a></td>
+                <td><a href="/Eleve/{{$E->id}}"><strong> Plus </strong></a></td>
+>>>>>>> Stashed changes
             </tr>
         @empty
             <tr aria-colspan="8">la listes des Eleves est vide</tr>
