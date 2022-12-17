@@ -18,6 +18,6 @@ class Module extends Model
 
     public function Elementmodule()
     {
-        return $this->HasMany(Elementmodule::class);
+        return $this->HasMany(Elementmodule::class,'module_code');
     }
 }

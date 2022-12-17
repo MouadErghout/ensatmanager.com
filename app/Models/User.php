@@ -44,6 +44,6 @@ class User extends Authenticatable
 
     public function eleve()
     {
-        return $this->hasOne(Eleve::class);
+        return $this->hasOne(Eleve::class,'eleve_code');
     }
 }

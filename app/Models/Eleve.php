@@ -17,22 +17,22 @@ class Eleve extends Model
 
     public function User()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'user_id');
     }
 
     public function Note()
     {
-        return $this->hasMany(Note::class);
+        return $this->hasMany(Note::class,'eleve_code');
     }
 
     public function Moyenne()
     {
-        return $this->hasOne(Moyenne::class);
+        return $this->hasOne(Moyenne::class,'eleve_code');
     }
 
     public function Filiere()
     {
-        return $this->belongsTo(Filiere::class);
+        return $this->belongsTo(Filiere::class,'filiere_code');
     }
 
 }

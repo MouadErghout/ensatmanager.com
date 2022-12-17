@@ -13,11 +13,11 @@ class Filiere extends Model
 
     public function Module()
     {
-        return $this->hasMany(Module::class);
+        return $this->hasMany(Module::class,'filiere_code');
     }
 
     public function Eleve()
     {
-        return $this->hasMany(Eleve::class);
+        return $this->hasMany(Eleve::class,'filiere_code');
     }
 }

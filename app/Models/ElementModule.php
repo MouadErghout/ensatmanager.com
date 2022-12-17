@@ -10,4 +10,9 @@ class ElementModule extends Model
     public $incrementing = false;
 
     use HasFactory;
+
+    public function Module()
+    {
+        return $this->belongsTo(Module::class,'module_code');
+    }
 }

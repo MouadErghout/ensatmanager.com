@@ -10,4 +10,14 @@ class Note extends Model
     public $incrementing = false;
 
     use HasFactory;
+
+    public function Eleve()
+    {
+        return $this->belongsTo(Eleve::class,'eleve_code');
+    }
+
+    public function ElementModule()
+    {
+        return $this->belongsTo(Eleve::class,'eleve_code');
+    }
 }
