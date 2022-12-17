@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('moyennes', function (Blueprint $table) {
+        Schema::create('moyennes', function (Blueprint $table)
+        {
             $table->string('eleve_code')->references('code')->on('eleves')->onUpdate('cascade')->onDelete('cascade');
-            $table->string('moyenne');
+            $table->float('moyenne')->nullable();
             $table->timestamps();
         });
     }
