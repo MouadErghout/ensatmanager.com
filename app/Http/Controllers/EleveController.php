@@ -75,13 +75,12 @@ class EleveController extends Controller
      * @param  \App\Models\Eleve  $eleve
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(String $code)
+    public function show(Eleve $Eleve)
     {
-        $E = Eleve::firstWhere('code','=',$code);
-        return view('Eleves.show',['Eleve'=>$E,
-            'User'=>User::find($E->user_id),
-            'Notes'=>Note::where('eleve_code','=',$E->code),
-            'Moyenne'=>Moyenne::firstWhere('eleve_code','=',$E->code)]);
+        return view('Eleves.show',['Eleve'=>$Eleve,
+            'User'=>User::find($Eleve->user_id),
+            'Notes'=>$Eleve->Note(),
+            'Moyenne'=>$Eleve->Moyenne()]);
     }
 
     /**
