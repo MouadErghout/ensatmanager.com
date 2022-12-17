@@ -81,8 +81,10 @@ class EleveController extends Controller
         $E = Eleve::find($id);
         return view('Eleves.show',['Eleve'=>$E,
             'User'=>User::find($E->user_id),
-            'Notes'=>Note::all()->where('eleve_code','=',$E->code),
-            'Moyenne'=>Moyenne::firstWhere('eleve_code','=',$E->code)]);
+            'Notes'=>$E->Note()
+        ]);
+            /*'Notes'=>Note::all()->where('eleve_code','=',$E->code),
+            'Moyenne'=>Moyenne::firstWhere('eleve_code','=',$E->code)*/
     }
 
     /**

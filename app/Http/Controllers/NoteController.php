@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Eleve;
 use App\Models\Note;
 use Illuminate\Http\Request;
 
@@ -44,9 +45,9 @@ class NoteController extends Controller
      * @param  \App\Models\Note  $note
      * @return \Illuminate\Http\Response
      */
-    public function show(Note $note)
+    public function show(int $id)
     {
-        //
+        $notes = Eleve::find($id)->Note();
     }
 
     /**

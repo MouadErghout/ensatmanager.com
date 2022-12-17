@@ -1,3 +1,4 @@
+<a href="/dashboard">Dashboard</a>
 <center>
     <h1>Liste des Eleves</h1>
     <table border="3">
@@ -25,5 +26,4 @@
         @endforelse
     </table>
     <br>
-    <a href="/dashboard">Dashboard</a>
 </center>

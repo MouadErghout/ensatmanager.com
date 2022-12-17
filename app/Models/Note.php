@@ -13,11 +13,11 @@ class Note extends Model
 
     public function Eleve()
     {
-        return $this->belongsTo(Eleve::class,'eleve_code');
+        return $this->belongsTo(Eleve::class);
     }
 
     public function ElementModule()
     {
-        return $this->belongsTo(Eleve::class,'eleve_code');
+        return $this->belongsTo(Eleve::class);
     }
 }

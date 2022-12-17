@@ -22,12 +22,12 @@ class Eleve extends Model
 
     public function Note()
     {
-        return $this->hasMany(Note::class,'eleve_code');
+        return $this->hasMany(Note::class);
     }
 
     public function Moyenne()
     {
-        return $this->hasOne(Moyenne::class,'eleve_code');
+        return $this->hasOne(Moyenne::class);
     }
 
     public function Filiere()

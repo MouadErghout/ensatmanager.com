@@ -13,11 +13,11 @@ class Module extends Model
 
     public function Filiere()
     {
-        return $this->belongsTo(Filiere::class,'filiere_code');
+        return $this->belongsTo(Filiere::class);
     }
 
     public function Elementmodule()
     {
-        return $this->HasMany(Elementmodule::class,'module_code');
+        return $this->HasMany(Elementmodule::class);
     }
 }

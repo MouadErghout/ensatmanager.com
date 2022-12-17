@@ -13,6 +13,6 @@ class ElementModule extends Model
 
     public function Module()
     {
-        return $this->belongsTo(Module::class,'module_code');
+        return $this->belongsTo(Module::class);
     }
 }

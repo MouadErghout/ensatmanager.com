@@ -13,6 +13,6 @@ class Moyenne extends Model
 
     public function Eleve()
     {
-        return $this->belongsTo(Eleve::class,'eleve_code');
+        return $this->belongsTo(Eleve::class);
     }
 }
