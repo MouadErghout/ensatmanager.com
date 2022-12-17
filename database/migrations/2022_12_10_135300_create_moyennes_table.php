@@ -17,6 +17,7 @@ return new class extends Migration
         {
             $table->id();
             $table->string('eleve_code')->references('code')->on('eleves')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('eleve_id')->nullable()->constrained('eleves')->onUpdate('cascade')->onDelete('cascade');
             $table->float('moyenne')->nullable();
             $table->timestamps();
         });

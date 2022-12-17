@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('VH');
             $table->string('poids');
             $table->string('module_code')->references('code')->on('modules')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('module_id')->nullable()->constrained('modules')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
