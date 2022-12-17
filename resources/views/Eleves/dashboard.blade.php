@@ -9,5 +9,25 @@
     </x-dropdown-link>
 </form>
 <a href="Note">Note et Resultas</a>
-
+<center>
+    <h1>{{$Eleve->nom.' '.$Eleve->prenom}}</h1>
+    <table>
+        <tr>
+            <td>Code Apogee</td>
+            <td>{{$Eleve->code}}</td>
+        </tr>
+        <tr>
+            <td>Filiere</td>
+            <td>{{$Eleve->filiere_code}}</td>
+        </tr>
+        <tr>
+            <td>Niveau</td>
+            <td>{{$Eleve->niveau}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{$User->email}}</td>
+        </tr>
+    </table>
+</center>
 

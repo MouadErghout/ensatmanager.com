@@ -83,7 +83,6 @@ class EleveController extends Controller
             'User'=>User::find($E->user_id),
             'Notes'=>Note::all()->where('eleve_code','=',$E->code),
             'Moyenne'=>Moyenne::firstWhere('eleve_code','=',$E->code)]);
-
     }
 
     /**

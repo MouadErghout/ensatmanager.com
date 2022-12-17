@@ -22,7 +22,7 @@ class HomeController extends Controller
 
         switch ($status)
         {
-            case 0: return view('Eleves.dashboard');break;
+            case 0: return view('Eleves.dashboard',['Eleve'=>User::find($User->id)->eleve,'User'=>$User]);break;
             case 1: return view('Admin.dashboard');break;
             default: return view('/');break;
         }
