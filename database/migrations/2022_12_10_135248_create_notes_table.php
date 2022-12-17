@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('notes', function (Blueprint $table) {
+            $table->id();
             $table->string('eleve_code')->references('code')->on('eleves')->onUpdate('cascade')->onDelete('cascade');
             $table->string('elementmodule_code')->references('code')->on('elementmodules')->onUpdate('cascade')->onDelete('cascade');
             $table->float('note')->nullable();

@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('moyennes', function (Blueprint $table)
         {
+            $table->id();
             $table->string('eleve_code')->references('code')->on('eleves')->onUpdate('cascade')->onDelete('cascade');
             $table->float('moyenne')->nullable();
             $table->timestamps();
