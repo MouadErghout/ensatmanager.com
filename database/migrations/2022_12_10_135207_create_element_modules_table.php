@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('element_modules', function (Blueprint $table) {
             $table->id();
-            $table->string('code');
+            $table->string('code')->unique();
             $table->string('designation');
             $table->string('VH');
             $table->string('poids');
