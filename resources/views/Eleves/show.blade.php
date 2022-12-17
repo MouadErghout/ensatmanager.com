@@ -1,1 +1,1 @@
-<?php
+{{dd($Eleve,$User,$Notes,$Moyenne)}}
