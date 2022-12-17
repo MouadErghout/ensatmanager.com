@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Eleve;
 use App\Models\Module;
+use App\Models\Moyenne;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
@@ -73,9 +74,13 @@ class EleveController extends Controller
      * @param  \App\Models\Eleve  $eleve
      * @return \Illuminate\Http\Response
      */
-    public function show(Eleve $eleve)
+    public function show(String $code)
     {
-        //
+        $E = Eleve::firsWhere('code','=',$code);
+        return view('Eleves.show',['Eleve'=>$E,
+            'User'=>User::find($E->user_id),
+            'Notes'=>Note::where('eleve_code','=',$E->code),
+            'Moyenne'=>Moyenne::firstWhere('eleve_code','=',$E->code)]);
     }
 
     /**
@@ -86,7 +91,7 @@ class EleveController extends Controller
      */
     public function edit(Eleve $eleve)
     {
-        //
+
     }
 
     /**
