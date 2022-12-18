@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--<!DOCTYPE Eleves SYSTEM "releve.dtd">-->
+<Eleves xmlns="https://www.w3schools.com"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://www.w3schools.com/xml releve.xsd"
+    niveau="AP2">
+    <Eleve code="l11125" nom="boulouqat" prenom="jawad">
+        <Module code="AP11" designation="analyse4">
+            <Element_module code="AP111" designation="algebre4">
+                <note>12</note>
+            </Element_module>
+            <note>12</note>
+        </Module>
+        <moyenne>12</moyenne>
+    </Eleve>
+    <moyenne_generale>12</moyenne_generale>
+</Eleves>
