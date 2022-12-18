@@ -1,5 +1,5 @@
 <a href="/dashboard">Dashboard</a>
-<td><a href="/Note/{{$Eleve->code}}"><strong> Notes et Resultats </strong></a></td>
+<td><a href="/Note/{{$Eleve->id}}"><strong> Notes et Resultats </strong></a></td>
 
 <center>
     <h1>{{$Eleve->nom}} {{$Eleve->prenom}}</h1>
@@ -29,7 +29,6 @@
             <td>{{$User->email}}</td>
         </tr>
     </table>
-    {{dd($Notes)}}
 </center>
 
 

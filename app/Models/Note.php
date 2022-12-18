@@ -16,8 +16,4 @@ class Note extends Model
         return $this->belongsTo(Eleve::class);
     }
 
-    public function ElementModule()
-    {
-        return $this->belongsTo(Eleve::class);
-    }
 }
