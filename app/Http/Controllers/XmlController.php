@@ -9,12 +9,26 @@ use Illuminate\Http\Request;
 class XmlController extends Controller
 {
 
-    public function index(){
+    public function XMLGINF1($Notes,$Moyenne)
+    {
         $dom = new DOMDocument();
         $dom->encoding = 'utf-8';
         $dom->xmlVersion = '1.0';
         $dom->formatOutput = true;
         $xml_file_name = 'movies_list.xml';
+
+        $root = $dom->createElement('Releve de Note');
+
+    }
+
+    public function index()
+    {
+        $dom = new DOMDocument();
+        $dom->encoding = 'utf-8';
+        $dom->xmlVersion = '1.0';
+        $dom->formatOutput = true;
+        $xml_file_name = 'movies_list.xml';
+
         $root = $dom->createElement('Movies');
 
         $movie_node = $dom->createElement('movie');
