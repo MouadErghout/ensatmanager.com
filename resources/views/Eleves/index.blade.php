@@ -1,4 +1,6 @@
 <a href="/dashboard">Dashboard</a>
+<a href="/RelevesGINF1">Releves</a>
+
 <center>
     <h1>Liste des Eleves</h1>
     <table border="3">
