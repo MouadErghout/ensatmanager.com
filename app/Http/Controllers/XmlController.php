@@ -9,16 +9,32 @@ use Illuminate\Http\Request;
 class XmlController extends Controller
 {
 
-    public function XMLGINF1($Notes,$Moyenne)
+    static public function XMLGINF1($Modules,$Notes,$Moyenne)
     {
         $dom = new DOMDocument();
         $dom->encoding = 'utf-8';
         $dom->xmlVersion = '1.0';
         $dom->formatOutput = true;
-        $xml_file_name = 'movies_list.xml';
+        $xml_file_name = 'Releve'.$Notes[0]->eleve_code.'xml';
 
-        $root = $dom->createElement('Releve de Note');
+        $root = $dom->createElement('Releve_note');
+        foreach ($Modules as $M)
 
+                $module = $dom->createElement('Module');
+                $module->setAttributeNode(new DOMAttr('id', $M->code));
+                $module->setAttributeNode(new DOMAttr('designation', $M->designation));
+
+                foreach ($M->Elementmodule as $EM) {
+                    $elementmodule = $dom->createElement('Element_module');
+                    $elementmodule->setAttributeNode(new DOMAttr('id', $EM->code));
+                    $elementmodule->setAttributeNode(new DOMAttr('designation', $EM->designation));
+                    $elementmodule->appendChild($dom->createElement('Note'));
+                    $module->appendChild($elementmodule);
+                }
+                $module->appendChild($dom->createElement('Note',0));
+                $root->appendChild($module);
+        $dom->save($xml_file_name);
+        return Redirect('/Eleve');
     }
 
     public function index()
