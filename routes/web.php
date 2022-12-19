@@ -8,6 +8,7 @@ use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\MoyenneController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\XmlController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,4 +51,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/RelevesGINF1',\App\Http\Controllers\XmlController::XMLGINF1());
+Route::get('/RelevesGINF1',[XmlController::class,XMLGINF1()]);
