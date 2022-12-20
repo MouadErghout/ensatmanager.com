@@ -51,4 +51,4 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/RelevesGINF1',[XmlController::class,XMLGINF1()]);
+Route::get('/RelevesGINF1',[XmlController::class,'XMLGINF1']);

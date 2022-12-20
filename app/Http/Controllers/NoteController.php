@@ -50,12 +50,11 @@ class NoteController extends Controller
     {
         $E = Eleve::find($id);
         $Ms = Module::all()->where('niveau','=',$E->niveau);
-        return XMLController::XMLGINF1($Ms,$E->Note,$E->Moyenne);
-        /*return view('Notes.index',['Eleve'=>$E,
+        return view('Notes.index',['Eleve'=>$E,
             'Notes'=>$E->Note,
             'Moyenne'=>$E->Moyenne,
             'Modules'=>Module::all()->where('niveau','=',$E->niveau)
-        ]);*/
+        ]);
 
     }
 

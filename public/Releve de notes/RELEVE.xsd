@@ -26,7 +26,7 @@
                             </xs:element>
                             <xs:element name="moyenne" type="unenote"/>
                         </xs:sequence>
-                        <xs:attribute name="code" type="xs:string"/>
+                        <xs:attribute name="id" type="xs:string"/>
                         <xs:attribute name="nom" type="xs:string"/>
                         <xs:attribute name="prenom" type="xs:string"/>
                     </xs:complexType>

@@ -10,73 +10,65 @@ use DOMAttr;
 use DOMDocument;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Redirect;
 
 class XmlController extends Controller
 {
-    public function XMLGINF1(){
-        $Eleves = Eleve::all()->where('niveau','=','GINF1');
-        $Moyenne = array();
-        foreach ($Eleves as $eleve)
-            $Moyenne[$eleve->code] = $eleve->Moyenne;
-
-        $Modules = Module::all()->where('niveau','=',"GINF1");
-        $Element_module = array();
-        foreach ($Modules as $item){
-            $Element_module[$item->code] = $item->Elementmodule;
-        }
-
+    public function XMLReleves($Classe)
+    {
         $dom = new DOMDocument();
         $dom->encoding = 'utf-8';
         $dom->xmlVersion = '1.0';
         $dom->formatOutput = true;
-        $xml_file = 'Releve de notes/GINF1.xml';
-        /*=================Schema/DTD===============*/
-        $ELEVES = $dom->createElement('Eleves');
-        $niveau = new DOMAttr('niveau','GINF1');
-        $ELEVES->setAttributeNode($niveau);
-        $dom->appendChild($ELEVES);
-        $somme_note_eleves = 0;
-        foreach ($Eleves as $eleve){
-            $ELEVE = $dom->createElement('Eleve');
-            $eleve_code = new DOMAttr('code',$eleve->code);
-            $eleve_nom = new DOMAttr('nom',$eleve->nom);
-            $eleve_prenom = new DOMAttr('prenom',$eleve->prenom);
-            $ELEVE->setAttributeNode($eleve_code);
-            $ELEVE->setAttributeNode($eleve_nom);
-            $ELEVE->setAttributeNode($eleve_prenom);
-            $somme_note_module=0;
-            foreach ($Modules as $module){
-                $MODULE = $dom->createElement('Module');
-                $module_code = new DOMAttr('code',$module->code);
-                $module_designation = new DOMAttr('designation',$module->designation);
-                $MODULE->setAttributeNode($module_code);
-                $MODULE->setAttributeNode($module_designation);
-                $somme_note=0;
-                foreach ($Element_module[$module->code] as $element){
-                    $ELEMENT = $dom->createElement('Element_module');
-                    $element_code = new DOMAttr('code',$element->code);
-                    $element_designation = new DOMAttr('designation',$element->designation);
-                    $ELEMENT->setAttributeNode($element_code);
-                    $ELEMENT->setAttributeNode($element_designation);
-                    $note = DB::select("select * from notes where eleve_code='$eleve->code' and elementmodule_code='$element->code'");
-                    $somme_note += $note[0]->note;
-                    $NOTE = $dom->createElement('note',$note[0]->note);
-                    $ELEMENT->appendChild($NOTE);
-                    $MODULE->appendChild($ELEMENT);
+        $xml_file_name = 'Releve de notes/'.$Classe.'xml';
+
+        $Eleves = $dom->createElement('Eleves');
+        $niveau = new DOMAttr('niveau',$Classe);
+        $Eleves->setAttributeNode($niveau);
+        $eleves = Eleve::all()->where('niveau','=',$Classe);
+        foreach ($eleves as $eleve)
+        {
+            $elev = $dom->createElement('Eleve');
+            $code = new DOMAttr('id', $eleve->code);
+            $nom = new DOMAttr('nom', $eleve->nom);
+            $prenom = new DOMAttr('prenom', $eleve->prenom);
+            $elev->setAttributeNode($code);
+            $elev->setAttributeNode($nom);
+            $elev->setAttributeNode($prenom);
+            $Modules = Module::all()->where('niveau', '=', $Classe);
+            $moyenne = 0;
+            foreach ($Modules as $Module) {
+                $module = $dom->createElement('Module');
+                $code = new DOMAttr('id', $Module->code);
+                $designation = new DOMAttr('designation', $Module->designation);
+                $module->setAttributeNode($code);
+                $module->setAttributeNode($designation);
+                $ElementsModule = $Module->Elementmodule;
+                $notem = 0;
+                foreach ($ElementsModule as $ElementModule) {
+                    $elementmodule = $dom->createElement('ElementModule');
+                    $code = new DOMAttr('id', $ElementModule->code);
+                    $designation = new DOMAttr('designation', $ElementModule->designation);
+                    $elementmodule->setAttributeNode($code);
+                    $elementmodule->setAttributeNode($designation);
+                    $noteElemod = (Note::firstWhere('elementmodule_code', '=', $ElementModule->code, 'and', 'eleve_code', '=', $eleve->code))->note;
+                    $note = $dom->createElement('Note', $noteElemod);
+                    $elementmodule->appendChild($note);
+                    $module->appendChild($elementmodule);
+                    $notem += $noteElemod;
                 }
-                $somme_note_module += $somme_note/count($Element_module[$module->code]);
-                $NOTE = $dom->createElement('note',$somme_note/count($Element_module[$module->code]));
-                $MODULE->appendChild($NOTE);
-                $ELEVE->appendChild($MODULE);
+                $notem = $notem / count($ElementsModule);
+                $note = $dom->createElement('Note', $notem);
+                $module->appendChild($note);
+                $elev->appendChild($module);
+                $moyenne += $notem;
             }
-            $MOYENNE = $dom->createElement('moyenne',$somme_note_module/12);
-            $ELEVE->appendChild($MOYENNE);
-            $somme_note_eleves += $somme_note_module/12;
-            $ELEVES->appendChild($ELEVE);
+            $Moyenne = $dom->createElement('Moyenne_Eleve', $moyenne/count($Modules));
+            $elev->appendChild($Moyenne);
+            $Eleves->appendChild($elev);
         }
-        $MOYENNE_GENERALE = $dom->createElement('moyenne_generale',$somme_note_eleves/count($Eleves));
-        $ELEVES->appendChild($MOYENNE_GENERALE);
-        $dom->save($xml_file);
+        $dom->appendChild($Eleves);
+        $dom->save($xml_file_name);
     }
 
     public function index(){
