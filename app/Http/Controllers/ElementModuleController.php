@@ -43,7 +43,7 @@ class ElementModuleController extends Controller
         $em->VH = $request->VH;
         $em->poids = $request->poids;
         $em->module_code = $request->module;
-        $em->module_id = Module::firstWhere('code','=',$request->module)->id;
+        $em->module_id = (Module::firstWhere('code','=',$request->module))->id;
         $em->save();
         return Redirect('/Elementmodule');
     }
