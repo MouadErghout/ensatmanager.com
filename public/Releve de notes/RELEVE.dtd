@@ -5,12 +5,12 @@
 <!ATTLIST Eleve id CDATA #REQUIRED
                 nom CDATA #REQUIRED
                 prenom CDATA #REQUIRED>
-<!ELEMENT Module (Element_module+,note)>
+<!ELEMENT Module (Element_module+,Note)>
 <!ATTLIST Module id CDATA #REQUIRED
                   designation CDATA #REQUIRED>
-<!ELEMENT Element_module (note)>
+<!ELEMENT Element_module (Note)>
 <!ATTLIST Element_module id CDATA #REQUIRED
                         designation CDATA #REQUIRED>
-<!ELEMENT note (#PCDATA)>
+<!ELEMENT Note (#PCDATA)>
 <!ELEMENT moyenne (#PCDATA)>
-<!ELEMENT moyenne_generale (#PCDATA)>
+<!ELEMENT Moyenne_generale (#PCDATA)>

@@ -19,6 +19,9 @@ class XmlController extends Controller
         $dom = new DOMDocument();
         $dom->encoding = 'utf-8';
         $dom->xmlVersion = '1.0';
+        $dom->xmlStandalone = false;
+        $DTD = new \DOMImplementation();
+        $dom->appendChild($DTD->createDocumentType('Eleves SYSTEM "Releve de notes/RELEVE.dtd"'));
         $dom->formatOutput = true;
         $xml_file_name = 'Releve de notes/'.$Classe.'.xml';
 
@@ -73,12 +76,16 @@ class XmlController extends Controller
         $Moyenne_generale = $dom->createElement('Moyenne_generale',$Moyenne_classe/count($eleves));
         $Eleves->appendChild($Moyenne_generale);
         $dom->appendChild($Eleves);
-        if($dom->schemaValidate('Releve de notes/RELEVE.xsd'))
+        if($dom->validate())
         {
-            $dom->save($xml_file_name);
-            return Redirect('Eleve');
+            if($dom->schemaValidate('Releve de notes/RELEVE.xsd'))
+            {
+                $dom->save($xml_file_name);
+                return Redirect('Eleve');
+            }
+            return "DOCUMENT Not well formed based on its xsd";
         }
-        return "XML DOcument is not well-formed";
+        return "XML Document is not well-formed based on its dtd";
     }
 
     public function index(){
