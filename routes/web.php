@@ -46,9 +46,11 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('Moyenne',MoyenneController::class);
 
+        Route::get('Releves/{Classe}',[XmlController::class,'XMLReleves']);
+
     });
 });
 
 require __DIR__.'/auth.php';
 
-Route::get('/Releves',[XmlController::class,'XMLReleves',]);
+

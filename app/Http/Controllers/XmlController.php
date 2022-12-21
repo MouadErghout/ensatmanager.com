@@ -20,12 +20,13 @@ class XmlController extends Controller
         $dom->encoding = 'utf-8';
         $dom->xmlVersion = '1.0';
         $dom->formatOutput = true;
-        $xml_file_name = 'Releve de notes/'.$Classe.'xml';
+        $xml_file_name = 'Releve de notes/'.$Classe.'.xml';
 
         $Eleves = $dom->createElement('Eleves');
         $niveau = new DOMAttr('niveau',$Classe);
         $Eleves->setAttributeNode($niveau);
         $eleves = Eleve::all()->where('niveau','=',$Classe);
+        $Moyenne_classe = 0;
         foreach ($eleves as $eleve)
         {
             $elev = $dom->createElement('Eleve');
@@ -46,7 +47,7 @@ class XmlController extends Controller
                 $ElementsModule = $Module->Elementmodule;
                 $notem = 0;
                 foreach ($ElementsModule as $ElementModule) {
-                    $elementmodule = $dom->createElement('ElementModule');
+                    $elementmodule = $dom->createElement('Element_module');
                     $code = new DOMAttr('id', $ElementModule->code);
                     $designation = new DOMAttr('designation', $ElementModule->designation);
                     $elementmodule->setAttributeNode($code);
@@ -63,12 +64,21 @@ class XmlController extends Controller
                 $elev->appendChild($module);
                 $moyenne += $notem;
             }
-            $Moyenne = $dom->createElement('Moyenne_Eleve', $moyenne/count($Modules));
+            $moyenne=($moyenne/count($Modules));
+            $Moyenne = $dom->createElement('Moyenne_eleve',$moyenne);
             $elev->appendChild($Moyenne);
             $Eleves->appendChild($elev);
+            $Moyenne_classe+=$moyenne;
         }
+        $Moyenne_generale = $dom->createElement('Moyenne_generale',$Moyenne_classe/count($eleves));
+        $Eleves->appendChild($Moyenne_generale);
         $dom->appendChild($Eleves);
-        $dom->save($xml_file_name);
+        if($dom->schemaValidate('Releve de notes/RELEVE.xsd'))
+        {
+            $dom->save($xml_file_name);
+            return Redirect('Eleve');
+        }
+        return "XML DOcument is not well-formed";
     }
 
     public function index(){

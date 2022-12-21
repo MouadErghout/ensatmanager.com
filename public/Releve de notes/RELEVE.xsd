@@ -6,32 +6,32 @@
                 <xs:element name="Eleve" minOccurs="0" maxOccurs="10">
                     <xs:complexType>
                         <xs:sequence>
-                            <xs:element name="Module"  minOccurs="1" maxOccurs="12">
+                            <xs:element name="Module" maxOccurs="12">
                                 <xs:complexType>
                                     <xs:sequence>
-                                        <xs:element name="Element_module"  minOccurs="1" maxOccurs="3">
+                                        <xs:element name="Element_module" maxOccurs="3">
                                             <xs:complexType>
                                                 <xs:sequence>
-                                                    <xs:element name="note" type="unenote"/>
+                                                    <xs:element name="Note" type="unenote"/>
                                                 </xs:sequence>
                                                 <xs:attribute name="id" type="xs:string"/>
                                                 <xs:attribute name="designation" type="xs:string"/>
                                             </xs:complexType>
                                         </xs:element>
-                                        <xs:element name="note" type="unenote"/>
+                                        <xs:element name="Note" type="unenote"/>
                                     </xs:sequence>
                                     <xs:attribute name="id" type="xs:string"/>
                                     <xs:attribute name="designation" type="xs:string"/>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="moyenne" type="unenote"/>
+                            <xs:element name="Moyenne_eleve" type="unenote"/>
                         </xs:sequence>
                         <xs:attribute name="id" type="xs:string"/>
                         <xs:attribute name="nom" type="xs:string"/>
                         <xs:attribute name="prenom" type="xs:string"/>
                     </xs:complexType>
                 </xs:element>
-                <xs:element name="moyenne_generale" type="unenote"/>
+                <xs:element name="Moyenne_generale" type="unenote"/>
             </xs:sequence>
             <xs:attribute name="niveau">
                 <xs:simpleType>

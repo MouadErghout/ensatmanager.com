@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT Eleves (Eleve*,moyenne_generale) >
+<!ELEMENT Eleves (Eleve+,moyenne_generale) >
 <!ATTLIST Eleves niveau (AP2|GINF1) #REQUIRED>
 <!ELEMENT Eleve (Module+,moyenne) >
 <!ATTLIST Eleve id CDATA #REQUIRED
