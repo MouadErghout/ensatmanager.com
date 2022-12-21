@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!ELEMENT Eleves (Eleve+,moyenne_generale) >
+<!ELEMENT Eleves (Eleve+,Moyenne_generale) >
 <!ATTLIST Eleves niveau (AP2|GINF1) #REQUIRED>
-<!ELEMENT Eleve (Module+,moyenne) >
+<!ELEMENT Eleve (Module+,Moyenne) >
 <!ATTLIST Eleve id CDATA #REQUIRED
                 nom CDATA #REQUIRED
                 prenom CDATA #REQUIRED>
@@ -12,5 +12,5 @@
 <!ATTLIST Element_module id CDATA #REQUIRED
                         designation CDATA #REQUIRED>
 <!ELEMENT Note (#PCDATA)>
-<!ELEMENT moyenne (#PCDATA)>
+<!ELEMENT Moyenne (#PCDATA)>
 <!ELEMENT Moyenne_generale (#PCDATA)>

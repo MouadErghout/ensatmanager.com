@@ -16,12 +16,12 @@ class XmlController extends Controller
 {
     public function XMLReleves($Classe)
     {
-        $dom = new DOMDocument();
+        $creator = new \DOMImplementation();
+        $doctype = $creator->createDocumentType('Eleves SYSTEM "Releve de notes/RELEVE.dtd"');
+        $dom = $creator->createDocument(null, null, $doctype);
         $dom->encoding = 'utf-8';
         $dom->xmlVersion = '1.0';
         $dom->xmlStandalone = false;
-        $DTD = new \DOMImplementation();
-        $dom->appendChild($DTD->createDocumentType('Eleves SYSTEM "Releve de notes/RELEVE.dtd"'));
         $dom->formatOutput = true;
         $xml_file_name = 'Releve de notes/'.$Classe.'.xml';
 
@@ -68,7 +68,7 @@ class XmlController extends Controller
                 $moyenne += $notem;
             }
             $moyenne=($moyenne/count($Modules));
-            $Moyenne = $dom->createElement('Moyenne_eleve',$moyenne);
+            $Moyenne = $dom->createElement('Moyenne',$moyenne);
             $elev->appendChild($Moyenne);
             $Eleves->appendChild($elev);
             $Moyenne_classe+=$moyenne;

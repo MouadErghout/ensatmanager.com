@@ -24,7 +24,7 @@
                                     <xs:attribute name="designation" type="xs:string"/>
                                 </xs:complexType>
                             </xs:element>
-                            <xs:element name="Moyenne_eleve" type="unenote"/>
+                            <xs:element name="Moyenne" type="unenote"/>
                         </xs:sequence>
                         <xs:attribute name="id" type="xs:string"/>
                         <xs:attribute name="nom" type="xs:string"/>

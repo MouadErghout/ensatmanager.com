@@ -1,6 +1,6 @@
 <a href="/dashboard">Dashboard</a>
 <a href="/Releves/{{$Eleves[0]->niveau}}">Releves</a>
-<div style="text-align: center;">
+<center>
     <h1>Liste des Eleves</h1>
     <table border="3">
         <tr>
@@ -27,4 +27,4 @@
         @endforelse
     </table>
     <br>
-</div>
+</center>
