@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('Moyenne',MoyenneController::class);
 
-        Route::get('Releves/{Classe}',[XmlController::class,'XMLReleves']);
+        Route::get('Releves de notes/{Classe}',[XmlController::class,'XMLReleves']);
 
     });
 });

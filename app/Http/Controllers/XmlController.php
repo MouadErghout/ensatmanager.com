@@ -4,11 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Eleve;
 use App\Models\Module;
-use App\Models\Moyenne;
 use App\Models\Note;
 use DOMAttr;
 use DOMDocument;
-use Illuminate\Http\Request;
+use DOMImplementation;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -16,18 +15,26 @@ class XmlController extends Controller
 {
     public function XMLReleves($Classe)
     {
-        $creator = new \DOMImplementation();
-        $doctype = $creator->createDocumentType('Eleves SYSTEM "Releve de notes/RELEVE.dtd"');
-        $dom = $creator->createDocument(null, null, $doctype);
-        $dom->encoding = 'utf-8';
+
+        $dom = new DOMDocument();
+        $dom->encoding = 'UTF-8';
         $dom->xmlVersion = '1.0';
         $dom->xmlStandalone = false;
         $dom->formatOutput = true;
-        $xml_file_name = 'Releve de notes/'.$Classe.'.xml';
+        $implement  = new DOMImplementation();
+        $dom->appendChild($implement->createDocumentType('Eleves SYSTEM "RELEVE.dtd"'));
+
+        $xml_file_name = 'Releves de notes/'.$Classe.'.xml';
 
         $Eleves = $dom->createElement('Eleves');
-        $niveau = new DOMAttr('niveau',$Classe);
+        $niveau = new DOMAttr('niveau',"$Classe");
+        /*$xmlns = new DOMAttr('xmlns',"https://www.w3schools.com");
+        $xmlns_xsi = new DOMAttr('xmlns:xsi',"http://www.w3.org/2001/XMLSchema-instance");
+        $xsi_schemaLocation = new DOMAttr('xsi:schemaLocation',"https://www.w3schools.com/xml RELEVE.xsd");*/
         $Eleves->setAttributeNode($niveau);
+        /*$Eleves->setAttributeNode($xmlns);
+        $Eleves->setAttributeNode($xmlns_xsi);
+        $Eleves->setAttributeNode($xsi_schemaLocation);*/
         $eleves = Eleve::all()->where('niveau','=',$Classe);
         $Moyenne_classe = 0;
         foreach ($eleves as $eleve)
@@ -55,7 +62,7 @@ class XmlController extends Controller
                     $designation = new DOMAttr('designation', $ElementModule->designation);
                     $elementmodule->setAttributeNode($code);
                     $elementmodule->setAttributeNode($designation);
-                    $noteElemod = (Note::firstWhere('elementmodule_code', '=', $ElementModule->code, 'and', 'eleve_code', '=', $eleve->code))->note;
+                    $noteElemod = (DB::select("select note from notes where elementmodule_code='".$ElementModule->code."' and eleve_id=".$eleve->id))[0]->note;
                     $note = $dom->createElement('Note', $noteElemod);
                     $elementmodule->appendChild($note);
                     $module->appendChild($elementmodule);
@@ -76,41 +83,21 @@ class XmlController extends Controller
         $Moyenne_generale = $dom->createElement('Moyenne_generale',$Moyenne_classe/count($eleves));
         $Eleves->appendChild($Moyenne_generale);
         $dom->appendChild($Eleves);
-        if($dom->validate())
-        {
-            if($dom->schemaValidate('Releve de notes/RELEVE.xsd'))
-            {
-                $dom->save($xml_file_name);
-                return Redirect('Eleve');
-            }
-            return "DOCUMENT Not well formed based on its xsd";
-        }
-        return "XML Document is not well-formed based on its dtd";
+        $dom->save($xml_file_name);
+
+        $xml = new DOMDocument();
+        $xml->load('Releves de notes/GINF1.xml');
+
+        if(!$xml->validate())
+            return '<b>DOMDocument::validate() Generated Errors!</b>';
+
+        /*if (!$xml->schemaValidate('Releves de notes/RELEVE.xsd'))
+            return '<b>DOMDocument::schemaValidate() Generated Errors!</b>';*/
+
+        return Redirect('/Eleve');
     }
 
-    public function index(){
-        $dom = new DOMDocument();
-        $dom->encoding = 'utf-8';
-        $dom->xmlVersion = '1.0';
-        $dom->formatOutput = true;
-        $xml_file_name = 'movies_list.xml';
-        $root = $dom->createElement('Movies');
-        $movie_node = $dom->createElement('movie');
-        $attr_movie_id = new DOMAttr('movie_id', '5467');
-        $movie_node->setAttributeNode($attr_movie_id);
-        $child_node_title = $dom->createElement('Title', 'The Campaign');
-        $movie_node->appendChild($child_node_title);
-        $child_node_year = $dom->createElement('Year', 2012);
-        $movie_node->appendChild($child_node_year);
-        $child_node_genre = $dom->createElement('Genre', 'The Campaign');
-        $movie_node->appendChild($child_node_genre);
-        $child_node_ratings = $dom->createElement('Ratings', 6.2);
-        $movie_node->appendChild($child_node_ratings);
-        $root->appendChild($movie_node);
-        $dom->appendChild($root);
-        $dom->save($xml_file_name);
-        echo "$xml_file_name has been successfully created";
-    }
+
     public function display(){
         $xml = simplexml_load_file('employees.xml');
         echo '<h2>Employees Listing</h2>';
