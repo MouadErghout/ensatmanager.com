@@ -8,7 +8,7 @@
         {{ __('Log Out') }}
     </x-dropdown-link>
 </form>
-<a href="Note">Note et Resultas</a>
+<a href="/Releve de note/{{$Eleve->id}}">Note et Resultas</a>
 <center>
     <h1>{{$Eleve->nom.' '.$Eleve->prenom}}</h1>
     <table>

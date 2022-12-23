@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Filiere;
 use App\Models\Module;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -40,6 +41,7 @@ class ModuleController extends Controller
         $M->code = $request->code;
         $M->designation = $request->designation;
         $M->filiere_code = $request->filiere;
+        $M->filiere_id = (Filiere::firstWhere('filiere_code','=',$request->filiere))->id;
         $M->niveau = $request->niveau;
         $M->semestre = $request->semestre;
         $M->save();

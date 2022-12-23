@@ -49,12 +49,12 @@ class NoteController extends Controller
     public function show(int $id)
     {
         $E = Eleve::find($id);
+        $Ms = Module::all()->where('niveau','=',$E->niveau);
         return view('Notes.index',['Eleve'=>$E,
             'Notes'=>$E->Note,
             'Moyenne'=>$E->Moyenne,
             'Modules'=>Module::all()->where('niveau','=',$E->niveau)
         ]);
-
     }
 
     /**

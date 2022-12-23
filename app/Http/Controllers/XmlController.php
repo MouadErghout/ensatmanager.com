@@ -4,104 +4,170 @@ namespace App\Http\Controllers;
 
 use App\Models\Eleve;
 use App\Models\Module;
-use App\Models\Moyenne;
 use App\Models\Note;
 use DOMAttr;
 use DOMDocument;
-use Illuminate\Http\Request;
+use DOMImplementation;
+use DOMXPath;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 
 class XmlController extends Controller
 {
-    public function AP2XML(){
-        $Eleves = Eleve::all()->where('niveau','=','AP2');
-        $Moyenne = array();
-        foreach ($Eleves as $eleve)
-            $Moyenne[$eleve->code] = $eleve->Moyenne;
-
-        $Modules = Module::all()->where('niveau','=',"AP2");
-        $Element_module = array();
-        foreach ($Modules as $item){
-            $Element_module[$item->code] = $item->Elementmodule;
-        }
+    public function XMLReleves($Classe)
+    {
 
         $dom = new DOMDocument();
-        $dom->encoding = 'utf-8';
+        $dom->encoding = 'UTF-8';
         $dom->xmlVersion = '1.0';
+        $dom->xmlStandalone = false;
         $dom->formatOutput = true;
-        $xml_file = 'Releve de notes/AP2.xml';
-        /*=================Schema/DTD===============*/
-        $ELEVES = $dom->createElement('Eleves');
-        $niveau = new DOMAttr('niveau','AP2');
-        $ELEVES->setAttributeNode($niveau);
-        $dom->appendChild($ELEVES);
-        $somme_note_eleves = 0;
-        foreach ($Eleves as $eleve){
-            $ELEVE = $dom->createElement('Eleve');
-            $eleve_code = new DOMAttr('code',$eleve->code);
-            $eleve_nom = new DOMAttr('nom',$eleve->nom);
-            $eleve_prenom = new DOMAttr('prenom',$eleve->prenom);
-            $ELEVE->setAttributeNode($eleve_code);
-            $ELEVE->setAttributeNode($eleve_nom);
-            $ELEVE->setAttributeNode($eleve_prenom);
-            $somme_note_module=0;
-            foreach ($Modules as $module){
-                $MODULE = $dom->createElement('Module');
-                $module_code = new DOMAttr('code',$module->code);
-                $module_designation = new DOMAttr('designation',$module->designation);
-                $MODULE->setAttributeNode($module_code);
-                $MODULE->setAttributeNode($module_designation);
-                $somme_note=0;
-                foreach ($Element_module[$module->code] as $element){
-                    $ELEMENT = $dom->createElement('Element_module');
-                    $element_code = new DOMAttr('code',$element->code);
-                    $element_designation = new DOMAttr('designation',$element->designation);
-                    $ELEMENT->setAttributeNode($element_code);
-                    $ELEMENT->setAttributeNode($element_designation);
-                    $note = DB::select("select * from notes where eleve_code='$eleve->code' and elementmodule_code='$element->code'");
-                    $somme_note += $note[0]->note;
-                    $NOTE = $dom->createElement('note',$note[0]->note);
-                    $ELEMENT->appendChild($NOTE);
-                    $MODULE->appendChild($ELEMENT);
+        $implement  = new DOMImplementation();
+        $dom->appendChild($implement->createDocumentType('Eleves SYSTEM "RELEVES.dtd"'));
+
+        $xml_file_name = 'Releves de notes/'.$Classe.'.xml';
+
+        $Eleves = $dom->createElement('Eleves');
+        $niveau = new DOMAttr('niveau',"$Classe");
+        /*$xmlns = new DOMAttr('xmlns',"https://www.w3schools.com");
+        $xmlns_xsi = new DOMAttr('xmlns:xsi',"http://www.w3.org/2001/XMLSchema-instance");
+        $xsi_schemaLocation = new DOMAttr('xsi:schemaLocation',"https://www.w3schools.com/xml RELEVES.xsd");*/
+        $Eleves->setAttributeNode($niveau);
+        /*$Eleves->setAttributeNode($xmlns);
+        $Eleves->setAttributeNode($xmlns_xsi);
+        $Eleves->setAttributeNode($xsi_schemaLocation);*/
+        $eleves = Eleve::all()->where('niveau','=',$Classe);
+        $Moyenne_classe = 0;
+        foreach ($eleves as $eleve)
+        {
+            $elev = $dom->createElement('Eleve');
+            $code = new DOMAttr('id', $eleve->code);
+            $nom = new DOMAttr('nom', $eleve->nom);
+            $prenom = new DOMAttr('prenom', $eleve->prenom);
+            $elev->setAttributeNode($code);
+            $elev->setAttributeNode($nom);
+            $elev->setAttributeNode($prenom);
+            $Modules = Module::all()->where('niveau', '=', $Classe);
+            $moyenne = 0;
+            foreach ($Modules as $Module) {
+                $module = $dom->createElement('Module');
+                $code = new DOMAttr('id', $Module->code);
+                $designation = new DOMAttr('designation', $Module->designation);
+                $module->setAttributeNode($code);
+                $module->setAttributeNode($designation);
+                $ElementsModule = $Module->Elementmodule;
+                $notem = 0;
+                foreach ($ElementsModule as $ElementModule) {
+                    $elementmodule = $dom->createElement('Element_module');
+                    $code = new DOMAttr('id', $ElementModule->code);
+                    $designation = new DOMAttr('designation', $ElementModule->designation);
+                    $elementmodule->setAttributeNode($code);
+                    $elementmodule->setAttributeNode($designation);
+                    $noteElemod = (DB::select("select note from notes where elementmodule_code='".$ElementModule->code."' and eleve_id=".$eleve->id))[0]->note;
+                    $note = $dom->createElement('Note', $noteElemod);
+                    $elementmodule->appendChild($note);
+                    $module->appendChild($elementmodule);
+                    $notem += $noteElemod;
                 }
-                $somme_note_module += $somme_note/count($Element_module[$module->code]);
-                $NOTE = $dom->createElement('note',$somme_note/count($Element_module[$module->code]));
-                $MODULE->appendChild($NOTE);
-                $ELEVE->appendChild($MODULE);
+                $notem = $notem / count($ElementsModule);
+                $note = $dom->createElement('Note', $notem);
+                $module->appendChild($note);
+                $elev->appendChild($module);
+                $moyenne += $notem;
             }
-            $MOYENNE = $dom->createElement('moyenne',$somme_note_module/12);
-            $ELEVE->appendChild($MOYENNE);
-            $somme_note_eleves += $somme_note_module/12;
-            $ELEVES->appendChild($ELEVE);
+            $moyenne=($moyenne/count($Modules));
+            $Moyenne = $dom->createElement('Moyenne',$moyenne);
+            $elev->appendChild($Moyenne);
+            $Eleves->appendChild($elev);
+            $Moyenne_classe+=$moyenne;
         }
-        $MOYENNE_GENERALE = $dom->createElement('moyenne_generale',$somme_note_eleves/count($Eleves));
-        $ELEVES->appendChild($MOYENNE_GENERALE);
-        $dom->save($xml_file);
+        $Moyenne_generale = $dom->createElement('Moyenne_generale',$Moyenne_classe/count($eleves));
+        $Eleves->appendChild($Moyenne_generale);
+        $dom->appendChild($Eleves);
+        $dom->save($xml_file_name);
+
+        //---------DTD Validation--------------------
+        if($this->IsValidDTD($xml_file_name))
+            echo "DTD Valid";
+        //---------Schema Validation------------------
+        if($this->IsValidSchema($xml_file_name))
+            echo "Schema valid";
+
+        //return Redirect('/Eleve');
     }
 
-    public function index(){
-        $dom = new DOMDocument();
-        $dom->encoding = 'utf-8';
-        $dom->xmlVersion = '1.0';
-        $dom->formatOutput = true;
-        $xml_file_name = 'movies_list.xml';
-        $root = $dom->createElement('Movies');
-        $movie_node = $dom->createElement('movie');
-        $attr_movie_id = new DOMAttr('movie_id', '5467');
-        $movie_node->setAttributeNode($attr_movie_id);
-        $child_node_title = $dom->createElement('Title', 'The Campaign');
-        $movie_node->appendChild($child_node_title);
-        $child_node_year = $dom->createElement('Year', 2012);
-        $movie_node->appendChild($child_node_year);
-        $child_node_genre = $dom->createElement('Genre', 'The Campaign');
-        $movie_node->appendChild($child_node_genre);
-        $child_node_ratings = $dom->createElement('Ratings', 6.2);
-        $movie_node->appendChild($child_node_ratings);
-        $root->appendChild($movie_node);
-        $dom->appendChild($root);
-        $dom->save($xml_file_name);
-        echo "$xml_file_name has been successfully created";
+    public function IsValidDTD($filePath)
+    {
+        $xml = new DOMDocument;
+        if($xml->load($filePath)){
+            if(!$xml->validate()){
+                File::delete($filePath);
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
+    public function IsValidSchema($filePath)
+    {
+        $xml = new DOMDocument;
+        if($xml->load($filePath)){
+            if(!$xml->schemaValidate('Releves de notes/RELEVES.xsd')){
+                File::delete($filePath);
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public function XMLReleve($id)
+    {
+
+        $xml = <<<'XML'
+<?xml version="1.0"?>
+<books>
+    <book>
+        <isbn>123456789098</isbn>
+        <title>Harry Potter</title>
+        <author>J K. Rowling</author>
+        <edition>2005</edition>
+    </book>
+    <book>
+        <placeItHere></placeItHere>
+        <isbn>1</isbn>
+        <title>stuffs</title>
+        <author>DA</author>
+        <edition>2014</edition>
+    </book>
+</books>
+XML;
+
+        $book = [
+            'isbn'    => 123456789099,
+            'title'   => 'Harry Potter 3',
+            'author'  => 'J K. Rowling',
+            'edition' => '2007'
+        ];
+
+        $dom = new DOMDocument();
+        $dom->formatOutput = true;
+        $dom->preserveWhiteSpace = false;
+        $dom->loadXML($xml);
+        $xpath = new DOMXPath($dom);
+
+        $placeItHere = $xpath->query('/books/book/placeItHere')->item(0);
+        $newBook = $placeItHere->appendChild($dom->createElement('book'));
+        foreach ($book as $part => $value) {
+            $element = $newBook->appendChild($dom->createElement($part));
+            $element->appendChild($dom->createTextNode($value));
+        }
+
+        echo $dom->saveXML();
+
+    }
+
     public function display(){
         $xml = simplexml_load_file('employees.xml');
         echo '<h2>Employees Listing</h2>';

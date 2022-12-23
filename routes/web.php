@@ -8,6 +8,7 @@ use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\MoyenneController;
 use App\Http\Controllers\NoteController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\XmlController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,13 +46,14 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('Moyenne',MoyenneController::class);
 
+        Route::get('Releves de notes/{Classe}',[XmlController::class,'XMLReleves']);
+
     });
+    Route::get('Releve de note/{id}',[XmlController::class,'XMLReleve']);
 });
 
 require __DIR__.'/auth.php';
-/*====================Generate XML=========================*/
-Route::get('/AP2XML',[\App\Http\Controllers\XmlController::class,'AP2XML']);
-
 //Test XML
 Route::get('/xmltest',[\App\Http\Controllers\XmlController::class,'index']);
 Route::get('/xmltestdisplay',[\App\Http\Controllers\XmlController::class,'display']);
+

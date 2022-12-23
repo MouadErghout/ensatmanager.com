@@ -1,4 +1,5 @@
 <a href="/dashboard">Dashboard</a>
+<a href="/Releves de notes/{{$Eleves[0]->niveau}}">Releves</a>
 <center>
     <h1>Liste des Eleves</h1>
     <table border="3">
