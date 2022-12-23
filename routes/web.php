@@ -49,6 +49,7 @@ Route::middleware('auth')->group(function () {
         Route::get('Releves de notes/{Classe}',[XmlController::class,'XMLReleves']);
 
     });
+    Route::get('Releve de note/{id}',[XmlController::class,'XMLReleve']);
 });
 
 require __DIR__.'/auth.php';

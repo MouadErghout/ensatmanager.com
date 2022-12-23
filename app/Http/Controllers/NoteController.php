@@ -55,7 +55,6 @@ class NoteController extends Controller
             'Moyenne'=>$E->Moyenne,
             'Modules'=>Module::all()->where('niveau','=',$E->niveau)
         ]);
-
     }
 
     /**

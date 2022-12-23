@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE Eleves SYSTEM "RELEVE.dtd">
+<!DOCTYPE Eleves SYSTEM "RELEVES.dtd">
 <Eleves niveau="GINF1">
   <Eleve id="K123456" nom="BOULOUQAT" prenom="Jawad">
     <Module id="GINF11" designation="Maths pour l'ingénieur">

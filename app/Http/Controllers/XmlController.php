@@ -8,6 +8,7 @@ use App\Models\Note;
 use DOMAttr;
 use DOMDocument;
 use DOMImplementation;
+use DOMXPath;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Redirect;
 
@@ -22,7 +23,7 @@ class XmlController extends Controller
         $dom->xmlStandalone = false;
         $dom->formatOutput = true;
         $implement  = new DOMImplementation();
-        $dom->appendChild($implement->createDocumentType('Eleves SYSTEM "RELEVE.dtd"'));
+        $dom->appendChild($implement->createDocumentType('Eleves SYSTEM "RELEVES.dtd"'));
 
         $xml_file_name = 'Releves de notes/'.$Classe.'.xml';
 
@@ -30,7 +31,7 @@ class XmlController extends Controller
         $niveau = new DOMAttr('niveau',"$Classe");
         /*$xmlns = new DOMAttr('xmlns',"https://www.w3schools.com");
         $xmlns_xsi = new DOMAttr('xmlns:xsi',"http://www.w3.org/2001/XMLSchema-instance");
-        $xsi_schemaLocation = new DOMAttr('xsi:schemaLocation',"https://www.w3schools.com/xml RELEVE.xsd");*/
+        $xsi_schemaLocation = new DOMAttr('xsi:schemaLocation',"https://www.w3schools.com/xml RELEVES.xsd");*/
         $Eleves->setAttributeNode($niveau);
         /*$Eleves->setAttributeNode($xmlns);
         $Eleves->setAttributeNode($xmlns_xsi);
@@ -83,18 +84,63 @@ class XmlController extends Controller
         $Moyenne_generale = $dom->createElement('Moyenne_generale',$Moyenne_classe/count($eleves));
         $Eleves->appendChild($Moyenne_generale);
         $dom->appendChild($Eleves);
-        $dom->save($xml_file_name);
 
         $xml = new DOMDocument();
         $xml->load('Releves de notes/GINF1.xml');
-
+        //---------DTD Validation--------------------
         if(!$xml->validate())
             return '<b>DOMDocument::validate() Generated Errors!</b>';
-
-        /*if (!$xml->schemaValidate('Releves de notes/RELEVE.xsd'))
-            return '<b>DOMDocument::schemaValidate() Generated Errors!</b>';*/
-
+        //---------Xquery Validation------------------
+        if (!$xml->schemaValidate('Releves de notes/RELEVES.xsd'))
+            return '<b>DOMDocument::schemaValidate() Generated Errors!</b>';
+        $dom->save($xml_file_name);
         return Redirect('/Eleve');
+    }
+
+    public function XMLReleve($id)
+    {
+
+        $xml = <<<'XML'
+<?xml version="1.0"?>
+<books>
+    <book>
+        <isbn>123456789098</isbn>
+        <title>Harry Potter</title>
+        <author>J K. Rowling</author>
+        <edition>2005</edition>
+    </book>
+    <book>
+        <placeItHere></placeItHere>
+        <isbn>1</isbn>
+        <title>stuffs</title>
+        <author>DA</author>
+        <edition>2014</edition>
+    </book>
+</books>
+XML;
+
+        $book = [
+            'isbn'    => 123456789099,
+            'title'   => 'Harry Potter 3',
+            'author'  => 'J K. Rowling',
+            'edition' => '2007'
+        ];
+
+        $dom = new DOMDocument();
+        $dom->formatOutput = true;
+        $dom->preserveWhiteSpace = false;
+        $dom->loadXML($xml);
+        $xpath = new DOMXPath($dom);
+
+        $placeItHere = $xpath->query('/books/book/placeItHere')->item(0);
+        $newBook = $placeItHere->appendChild($dom->createElement('book'));
+        foreach ($book as $part => $value) {
+            $element = $newBook->appendChild($dom->createElement($part));
+            $element->appendChild($dom->createTextNode($value));
+        }
+
+        echo $dom->saveXML();
+
     }
 
 

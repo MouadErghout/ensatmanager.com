@@ -12,7 +12,8 @@
         "laravel/tinker": "^2.7",
         "yajra/laravel-oci8": "^9.1",
       "ext-dom": "*",
-      "ext-libxml": "*"
+      "ext-libxml": "*",
+      "ext-simplexml": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

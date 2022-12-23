@@ -2,7 +2,7 @@
 <!ELEMENT Eleves (Eleve+,Moyenne_generale) >
 <!ATTLIST Eleves niveau (AP2|GINF1) #REQUIRED>
 <!ELEMENT Eleve (Module+,Moyenne) >
-<!ATTLIST Eleve id CDATA #REQUIRED
+<!ATTLIST Eleve id ID #REQUIRED
                 nom CDATA #REQUIRED
                 prenom CDATA #REQUIRED>
 <!ELEMENT Module (Element_module+,Note)>
