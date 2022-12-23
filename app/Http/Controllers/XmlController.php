@@ -10,6 +10,7 @@ use DOMDocument;
 use DOMImplementation;
 use DOMXPath;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Redirect;
 
 class XmlController extends Controller
@@ -84,17 +85,41 @@ class XmlController extends Controller
         $Moyenne_generale = $dom->createElement('Moyenne_generale',$Moyenne_classe/count($eleves));
         $Eleves->appendChild($Moyenne_generale);
         $dom->appendChild($Eleves);
-
-        $xml = new DOMDocument();
-        $xml->load('Releves de notes/GINF1.xml');
-        //---------DTD Validation--------------------
-        if(!$xml->validate())
-            return '<b>DOMDocument::validate() Generated Errors!</b>';
-        //---------Xquery Validation------------------
-        if (!$xml->schemaValidate('Releves de notes/RELEVES.xsd'))
-            return '<b>DOMDocument::schemaValidate() Generated Errors!</b>';
         $dom->save($xml_file_name);
-        return Redirect('/Eleve');
+
+        //---------DTD Validation--------------------
+        if($this->IsValidDTD($xml_file_name))
+            echo "DTD Valid";
+        //---------Schema Validation------------------
+        $this->IsValidSchema($xml_file_name);
+            echo "Schema valid";
+
+        //return Redirect('/Eleve');
+    }
+
+    public function IsValidDTD($filePath)
+    {
+        $xml = new DOMDocument;
+        if($xml->load($filePath)){
+            if(!$xml->validate()){
+                File::delete($filePath);
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+    public function IsValidSchema($filePath)
+    {
+        $xml = new DOMDocument;
+        if($xml->load($filePath)){
+            if(!$xml->schemaValidate('Releves de notes/RELEVES.xsd')){
+                File::delete($filePath);
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 
     public function XMLReleve($id)
