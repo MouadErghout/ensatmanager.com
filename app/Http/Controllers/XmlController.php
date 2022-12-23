@@ -91,7 +91,7 @@ class XmlController extends Controller
         if($this->IsValidDTD($xml_file_name))
             echo "DTD Valid";
         //---------Schema Validation------------------
-        $this->IsValidSchema($xml_file_name);
+        if($this->IsValidSchema($xml_file_name))
             echo "Schema valid";
 
         //return Redirect('/Eleve');
