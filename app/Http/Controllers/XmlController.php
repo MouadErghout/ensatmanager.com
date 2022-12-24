@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Eleve;
 use App\Models\Module;
 use App\Models\Note;
+use App\Models\User;
 use DOMAttr;
 use DOMDocument;
 use DOMImplementation;
@@ -89,10 +90,12 @@ class XmlController extends Controller
 
         //---------DTD Validation--------------------
         if($this->IsValidDTD($xml_file_name))
-            echo "DTD Valid";
+            echo "<center><h1>DTD Valid</h1></br>";
         //---------Schema Validation------------------
-        if($this->IsValidSchema($xml_file_name))
-            echo "Schema valid";
+        if($this->IsValidSchema($xml_file_name,'Releves de notes/RELEVES.xsd'))
+            echo "<h1>Schema valid</h1><br>
+                    <h2>Les releves de notes ont bien été mises à jour</h2><br>
+                    <a href='/dashboard'>Revenir au dashboard</a><br></center>";
 
         //return Redirect('/Eleve');
     }
@@ -109,12 +112,12 @@ class XmlController extends Controller
         }
         return false;
     }
-    public function IsValidSchema($filePath)
+    public function IsValidSchema($xmlPath,$xsdPath)
     {
         $xml = new DOMDocument;
-        if($xml->load($filePath)){
-            if(!$xml->schemaValidate('Releves de notes/RELEVES.xsd')){
-                File::delete($filePath);
+        if($xml->load($xmlPath)){
+            if(!$xml->schemaValidate($xsdPath)){
+                File::delete($xmlPath);
                 return false;
             }
             return true;
@@ -124,59 +127,89 @@ class XmlController extends Controller
 
     public function XMLReleve($id)
     {
-
-        $xml = <<<'XML'
-<?xml version="1.0"?>
-<books>
-    <book>
-        <isbn>123456789098</isbn>
-        <title>Harry Potter</title>
-        <author>J K. Rowling</author>
-        <edition>2005</edition>
-    </book>
-    <book>
-        <placeItHere></placeItHere>
-        <isbn>1</isbn>
-        <title>stuffs</title>
-        <author>DA</author>
-        <edition>2014</edition>
-    </book>
-</books>
-XML;
-
-        $book = [
-            'isbn'    => 123456789099,
-            'title'   => 'Harry Potter 3',
-            'author'  => 'J K. Rowling',
-            'edition' => '2007'
-        ];
-
         $dom = new DOMDocument();
+        $dom->encoding = 'UTF-8';
+        $dom->xmlVersion = '1.0';
+        $dom->xmlStandalone = false;
         $dom->formatOutput = true;
-        $dom->preserveWhiteSpace = false;
-        $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
+        $implement  = new DOMImplementation();
+        $dom->appendChild($implement->createDocumentType('Eleves SYSTEM "RELEVE.dtd"'));
 
-        $placeItHere = $xpath->query('/books/book/placeItHere')->item(0);
-        $newBook = $placeItHere->appendChild($dom->createElement('book'));
-        foreach ($book as $part => $value) {
-            $element = $newBook->appendChild($dom->createElement($part));
-            $element->appendChild($dom->createTextNode($value));
-        }
+        $Eleve=Eleve::find($id);
+        $xml_file_name = 'Releves de notes/'.$Eleve->niveau.'.xml';
+        //$niveau = new DOMAttr('niveau',$Eleve->niveau);
 
-        echo $dom->saveXML();
+        $doc = new DOMDocument;
+
+// We don't want to bother with white spaces
+        $doc->preserveWhiteSpace = false;
+
+        $doc->load('Releves de notes/GINF1.xml');
+
+        $xpath = new DOMXPath($doc);
+
+// We start from the root element
+        $query = "//Eleve[@id='".$Eleve->code."']";
+        $note = $xpath->query($query);
+        foreach ($note as $n)
+            echo $n->nodeValue;
 
     }
 
 
-    public function display(){
-        $xml = simplexml_load_file('employees.xml');
-        echo '<h2>Employees Listing</h2>';
-        $list = $xml->record;
-        for ($i = 0; $i < count($list); $i++) {
-            echo '<b>Man no:</b> ' . $list[$i]->attributes()->man_no . '<br>';
-            echo 'Name: ' . $list[$i]->name . '<br>';
-            echo 'Position: ' . $list[$i]->position . '<br><br>';
+    public function XMLCartes($Classe)
+    {
+
+        $dom = new DOMDocument();
+        $dom->encoding = 'UTF-8';
+        $dom->xmlVersion = '1.0';
+        $dom->xmlStandalone = false;
+        $dom->formatOutput = true;
+        $implement  = new DOMImplementation();
+        $dom->appendChild($implement->createDocumentType('Cartes SYSTEM "CARTES.dtd"'));
+
+        $xml_file_name = 'Cartes des etudiants/'.$Classe.'.xml';
+
+        $Cartes = $dom->createElement('Cartes');
+        $niveau = new DOMAttr('Niveau',"$Classe");
+        $Cartes->setAttributeNode($niveau);
+        /*$xmlns = new DOMAttr('xmlns',"https://www.w3schools.com");
+        $xmlns_xsi = new DOMAttr('xmlns:xsi',"http://www.w3.org/2001/XMLSchema-instance");
+        $xsi_schemaLocation = new DOMAttr('xsi:schemaLocation',"https://www.w3schools.com/xml RELEVES.xsd");*/
+        /*$Eleves->setAttributeNode($xmlns);
+        $Eleves->setAttributeNode($xmlns_xsi);
+        $Eleves->setAttributeNode($xsi_schemaLocation);*/
+        $eleves = Eleve::all()->where('niveau','=',$Classe);
+        foreach ($eleves as $eleve) {
+            $carte = $dom->createElement('Carte');
+            $code = new DOMAttr('id', $eleve->code);
+            $carte->setAttributeNode($code);
+            $Nom = $dom->createElement('Nom', $eleve->nom);
+            $Prenom = $dom->createElement('Prenom', $eleve->prenom);
+            $CodeApogee = $dom->createElement('CodeApogee', $eleve->code);
+            $Filiere = $dom->createElement('Filiere', $eleve->filiere_code);
+            $Niveau = $dom->createElement('Niveau', $eleve->niveau);
+            $Email = $dom->createElement('Email', $eleve->User->email);
+            $Image = $dom->createElement('Image', $eleve->photo);
+            $carte->appendChild($Nom);
+            $carte->appendChild($Prenom);
+            $carte->appendChild($CodeApogee);
+            $carte->appendChild($Filiere);
+            $carte->appendChild($Niveau);
+            $carte->appendChild($Email);
+            $carte->appendChild($Image);
+            $Cartes->appendChild($carte);
         }
+        $dom->appendChild($Cartes);
+        $dom->save($xml_file_name);
+
+        //---------DTD Validation--------------------
+        if($this->IsValidDTD($xml_file_name))
+            echo "<center><h1>DTD Valid</h1>";
+        //---------Schema Validation------------------
+        if($this->IsValidSchema($xml_file_name,'Cartes des etudiants/CARTES.xsd'))
+            echo "<h1>Schema valid</h1><br>
+                    <h2>Les cartes des etudiants ont bien été mises à jour</h2><br>
+                    <a href='/dashboard'>Revenir au dashboard</a><br></center>";
     }
 }

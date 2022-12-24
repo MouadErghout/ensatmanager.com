@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="Cartes">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Carte" minOccurs="0" maxOccurs="10">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Nom" type="xs:string"/>
+                            <xs:element name="Prenom" type="xs:string"/>
+                            <xs:element name="CodeApogee" type="xs:string"/>
+                            <xs:element name="Filiere" type="xs:string"/>
+                            <xs:element name="Niveau" type="xs:string"/>
+                            <xs:element name="Email" type="xs:string"/>
+                            <xs:element name="Image" type="xs:string"/>
+                        </xs:sequence>
+                        <xs:attribute name="id" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Niveau" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
