@@ -1,5 +1,6 @@
 <a href="/dashboard">Dashboard</a>
-<td><a href="/Note/{{$Eleve->id}}"><strong> Notes et Resultats </strong></a></td>
+<a href="/Releve de note/{{$Eleve->id}}">Note et Resultas</a>
+
 
 <center>
     <h1>{{$Eleve->nom}} {{$Eleve->prenom}}</h1>

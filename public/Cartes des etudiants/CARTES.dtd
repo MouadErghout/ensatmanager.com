@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!ELEMENT Cartes (Carte+) >
+    <!ATTLIST Cartes Niveau ID #REQUIRED>
+    <!ELEMENT Carte (Nom,Prenom,CodeApogee,Filiere,Niveau,Email,Image) >
+    <!ATTLIST Carte id ID #REQUIRED>
+    <!ELEMENT Nom  (#PCDATA)>
+    <!ELEMENT Prenom (#PCDATA)>
+    <!ELEMENT CodeApogee (#PCDATA)>
+    <!ELEMENT Filiere (#PCDATA)>
+    <!ELEMENT Niveau (#PCDATA)>
+    <!ELEMENT Email (#PCDATA)>
+    <!ELEMENT Image (#PCDATA)>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Cartes SYSTEM "CARTES.dtd">
+<Cartes Niveau="GINF1">
+  <Carte id="K123456">
+    <Nom>BOULOUQAT</Nom>
+    <Prenom>Jawad</Prenom>
+    <CodeApogee>K123456</CodeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>jawad.boulouqat@gmail.com</Email>
+    <Image/>
+  </Carte>
+  <Carte id="LF54111">
+    <Nom>ERGHOUT</Nom>
+    <Prenom>Mouad</Prenom>
+    <CodeApogee>LF54111</CodeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>mouad.erghout.5@gmail.com</Email>
+    <Image/>
+  </Carte>
+  <Carte id="ZK123456">
+    <Nom>MAFTOUHI</Nom>
+    <Prenom>Bilal</Prenom>
+    <CodeApogee>ZK123456</CodeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>bilal.maftouhi@gmail.com</Email>
+    <Image/>
+  </Carte>
+  <Carte id="R123456">
+    <Nom>ZAOUI</Nom>
+    <Prenom>Oussama</Prenom>
+    <CodeApogee>R123456</CodeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>oussama.zaoui@gmail.com</Email>
+    <Image/>
+  </Carte>
+  <Carte id="F123555">
+    <Nom>ALAMI</Nom>
+    <Prenom>Louay</Prenom>
+    <CodeApogee>F123555</CodeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>louay.alami@gmail.com</Email>
+    <Image/>
+  </Carte>
+  <Carte id="M123455">
+    <Nom>HACHGUER</Nom>
+    <Prenom>Mohamed</Prenom>
+    <CodeApogee>M123455</CodeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>mohamed.hachguer@gmail.com</Email>
+    <Image/>
+  </Carte>
+  <Carte id="E1234455">
+    <Nom>RACHED</Nom>
+    <Prenom>Wassim</Prenom>
+    <CodeApogee>E1234455</CodeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>wassim.rached@gmail.com</Email>
+    <Image/>
+  </Carte>
+  <Carte id="Y12345">
+    <Nom>IDALIN</Nom>
+    <Prenom>Sohaib</Prenom>
+    <CodeApogee>Y12345</CodeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>sohaib.idalin@gmail.com</Email>
+    <Image/>
+  </Carte>
+  <Carte id="K987244">
+    <Nom>BOUZIYANI</Nom>
+    <Prenom>Abir</Prenom>
+    <CodeApogee>K987244</CodeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>abir.bouzyani@gmail.com</Email>
+    <Image/>
+  </Carte>
+</Cartes>

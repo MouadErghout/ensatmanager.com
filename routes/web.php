@@ -47,6 +47,7 @@ Route::middleware('auth')->group(function () {
         Route::resource('Moyenne',MoyenneController::class);
 
         Route::get('Releves de notes/{Classe}',[XmlController::class,'XMLReleves']);
+        Route::get('Cartes des etudiants/{Classe}',[XmlController::class,'XMLCartes']);
 
     });
     Route::get('Releve de note/{id}',[XmlController::class,'XMLReleve']);
