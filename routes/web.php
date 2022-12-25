@@ -7,7 +7,9 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\MoyenneController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\ProfController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\XmlController;
 use Illuminate\Support\Facades\Route;
 
@@ -46,7 +48,16 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('Moyenne',MoyenneController::class);
 
+        Route::resource('Prof',ProfController::class);
+
+        Route::resource('Seance',SeanceController::class);
+
+        Route::get('Seances dashboard', function () {
+            return view('Seances.dashboard');
+        });
+
         Route::get('Releves de notes/{Classe}',[XmlController::class,'XMLReleves']);
+
         Route::get('Cartes des etudiants/{Classe}',[XmlController::class,'XMLCartes']);
 
     });
