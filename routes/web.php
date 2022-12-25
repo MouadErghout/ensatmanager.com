@@ -52,13 +52,15 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('Seance',SeanceController::class);
 
-        Route::get('Seances dashboard', function () {
-            return view('Seances.dashboard');
+        Route::get('Emplois du temps/dashboard', function () {
+            return view('Emplois du temps.dashboard');
         });
 
         Route::get('Releves de notes/{Classe}',[XmlController::class,'XMLReleves']);
 
         Route::get('Cartes des etudiants/{Classe}',[XmlController::class,'XMLCartes']);
+
+        Route::get('Emplois du temps/{Classe}',[XmlController::class,'XMLEmplois']);
 
     });
     Route::get('Releve de note/{id}',[XmlController::class,'XMLReleve']);

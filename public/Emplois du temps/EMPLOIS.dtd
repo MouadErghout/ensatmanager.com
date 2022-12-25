@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!ELEMENT EmploisDuTemps (Emploi+) >
+    <!ATTLIST EmploisDuTemps Niveau ID #REQUIRED>
+    <!ELEMENT Emploi (Seance+) >
+    <!ATTLIST Emploi Misemestre ID #REQUIRED>
+    <!ELEMENT Seance (#PCDATA)>
+    <!ATTLIST Seance Prof CDATA #REQUIRED
+                     Sorte CDATA #REQUIRED
+                     Jour CDATA #REQUIRED
+                     Temps CDATA #REQUIRED
+                     Salle CDATA #REQUIRED>
+

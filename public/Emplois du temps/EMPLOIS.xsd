@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+    <xs:element name="EmploisDuTemps">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Emploi" minOccurs="0" maxOccurs="4">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="Seance" type="xs:string" minOccurs="0" maxOccurs="28">
+                                <xs:complexType>
+                                    <xs:attribute name="Prof" type="xs:string"/>
+                                    <xs:attribute name="Sorte" type="xs:string"/>
+                                    <xs:attribute name="Jour" type="xs:string"/>
+                                    <xs:attribute name="Temps" type="xs:string"/>
+                                    <xs:attribute name="Salle" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute name="Misemestre" type="xs:string"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="Niveau" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

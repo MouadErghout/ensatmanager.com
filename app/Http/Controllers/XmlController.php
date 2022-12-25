@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Eleve;
 use App\Models\Module;
 use App\Models\Note;
+use App\Models\Seance;
 use App\Models\User;
 use DOMAttr;
 use DOMDocument;
@@ -164,7 +165,7 @@ class XmlController extends Controller
         $dom->xmlStandalone = false;
         $dom->formatOutput = true;
         $implement  = new DOMImplementation();
-        $dom->appendChild($implement->createDocumentType('Cartes SYSTEM "CARTES.dtd"'));
+        $dom->appendChild($implement->createDocumentType('Cartes SYSTEM "EMPLOIS.dtd"'));
 
         $xml_file_name = 'Cartes des etudiants/'.$Classe.'.xml';
 
@@ -205,13 +206,13 @@ class XmlController extends Controller
         if($this->IsValidDTD($xml_file_name))
             echo "<center><h1>DTD Valid</h1>";
         //---------Schema Validation------------------
-        if($this->IsValidSchema($xml_file_name,'Cartes des etudiants/CARTES.xsd'))
+        if($this->IsValidSchema($xml_file_name,'Cartes des etudiants/EMPLOIS.xsd'))
             echo "<h1>Schema valid</h1><br>
                     <h2>Les cartes des etudiants ont bien été mises à jour</h2><br>
                     <a href='/dashboard'>Revenir au dashboard</a><br></center>";
     }
 
-    public function XMLEmploiDuTemps($Classe)
+    public function XMLEmplois($Classe)
     {
 
         $dom = new DOMDocument();
@@ -220,78 +221,51 @@ class XmlController extends Controller
         $dom->xmlStandalone = false;
         $dom->formatOutput = true;
         $implement  = new DOMImplementation();
-        $dom->appendChild($implement->createDocumentType('Eleves SYSTEM "RELEVES.dtd"'));
+        $dom->appendChild($implement->createDocumentType('EmploisDuTemps SYSTEM "EMPLOIS.dtd"'));
 
-        $xml_file_name = 'Releves de notes/'.$Classe.'.xml';
+        $xml_file_name = 'Emplois du temps/'.$Classe.'.xml';
 
-        $Eleves = $dom->createElement('Eleves');
-        $niveau = new DOMAttr('niveau',"$Classe");
+        $Emplois = $dom->createElement('EmploisDuTemps');
+        $niveau = new DOMAttr('Niveau',"$Classe");
         /*$xmlns = new DOMAttr('xmlns',"https://www.w3schools.com");
         $xmlns_xsi = new DOMAttr('xmlns:xsi',"http://www.w3.org/2001/XMLSchema-instance");
         $xsi_schemaLocation = new DOMAttr('xsi:schemaLocation',"https://www.w3schools.com/xml RELEVES.xsd");*/
-        $Eleves->setAttributeNode($niveau);
+        $Emplois->setAttributeNode($niveau);
         /*$Eleves->setAttributeNode($xmlns);
         $Eleves->setAttributeNode($xmlns_xsi);
         $Eleves->setAttributeNode($xsi_schemaLocation);*/
-        $eleves = Eleve::all()->where('niveau','=',$Classe);
-        $Moyenne_classe = 0;
-        foreach ($eleves as $eleve)
-        {
-            $elev = $dom->createElement('Eleve');
-            $code = new DOMAttr('id', $eleve->code);
-            $nom = new DOMAttr('nom', $eleve->nom);
-            $prenom = new DOMAttr('prenom', $eleve->prenom);
-            $elev->setAttributeNode($code);
-            $elev->setAttributeNode($nom);
-            $elev->setAttributeNode($prenom);
-            $Modules = Module::all()->where('niveau', '=', $Classe);
-            $moyenne = 0;
-            foreach ($Modules as $Module) {
-                $module = $dom->createElement('Module');
-                $code = new DOMAttr('id', $Module->code);
-                $designation = new DOMAttr('designation', $Module->designation);
-                $module->setAttributeNode($code);
-                $module->setAttributeNode($designation);
-                $ElementsModule = $Module->Elementmodule;
-                $notem = 0;
-                foreach ($ElementsModule as $ElementModule) {
-                    $elementmodule = $dom->createElement('Element_module');
-                    $code = new DOMAttr('id', $ElementModule->code);
-                    $designation = new DOMAttr('designation', $ElementModule->designation);
-                    $elementmodule->setAttributeNode($code);
-                    $elementmodule->setAttributeNode($designation);
-                    $noteElemod = (DB::select("select note from notes where elementmodule_code='".$ElementModule->code."' and eleve_id=".$eleve->id))[0]->note;
-                    $note = $dom->createElement('Note', $noteElemod);
-                    $elementmodule->appendChild($note);
-                    $module->appendChild($elementmodule);
-                    $notem += $noteElemod;
-                }
-                $notem = $notem / count($ElementsModule);
-                $note = $dom->createElement('Note', $notem);
-                $module->appendChild($note);
-                $elev->appendChild($module);
-                $moyenne += $notem;
-            }
-            $moyenne=($moyenne/count($Modules));
-            $Moyenne = $dom->createElement('Moyenne',$moyenne);
-            $elev->appendChild($Moyenne);
-            $Eleves->appendChild($elev);
-            $Moyenne_classe+=$moyenne;
-        }
-        $Moyenne_generale = $dom->createElement('Moyenne_generale',$Moyenne_classe/count($eleves));
-        $Eleves->appendChild($Moyenne_generale);
-        $dom->appendChild($Eleves);
-        $dom->save($xml_file_name);
 
+        for($i=1;$i<2;$i++)
+        {
+            $Emploi = $dom->createElement('Emploi');
+            $mismestre = new DOMAttr('Misemestre', 'misemestre_'.$i);
+            $Emploi->setAttributeNode($mismestre);
+            $Seances = Seance::all()->where('niveau','=',$Classe)->where('misemestre','=',$i);
+            foreach ($Seances as $Seance) {
+                $seance = $dom->createElement('Seance',$Seance->element_module);
+                $Prof = new DOMAttr('Prof', $Seance->prof);
+                $Sorte = new DOMAttr('Sorte', $Seance->type);
+                $Jour = new DOMAttr('Jour', $Seance->jour);
+                $Temps = new DOMAttr('Temps', $Seance->temps);
+                $Salle = new DOMAttr('Salle', $Seance->salle);
+                $seance->setAttributeNode($Prof);
+                $seance->setAttributeNode($Sorte);
+                $seance->setAttributeNode($Jour);
+                $seance->setAttributeNode($Temps);
+                $seance->setAttributeNode($Salle);
+                $Emploi->appendChild($seance);
+            }
+            $Emplois->appendChild($Emploi);
+        }
+        $dom->appendChild($Emplois);
+        $dom->save($xml_file_name);
         //---------DTD Validation--------------------
         if($this->IsValidDTD($xml_file_name))
             echo "<center><h1>DTD Valid</h1></br>";
         //---------Schema Validation------------------
-        if($this->IsValidSchema($xml_file_name,'Releves de notes/RELEVES.xsd'))
+        if($this->IsValidSchema($xml_file_name,'Emplois du temps/EMPLOIS.xsd'))
             echo "<h1>Schema valid</h1><br>
                     <h2>Les releves de notes ont bien été mises à jour</h2><br>
                     <a href='/dashboard'>Revenir au dashboard</a><br></center>";
-
-        //return Redirect('/Eleve');
     }
 }

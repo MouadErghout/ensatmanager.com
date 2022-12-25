@@ -16,7 +16,7 @@ class SeanceController extends Controller
      */
     public function index()
     {
-        return view('Seances.index',['Seances'=>Seance::all()]);
+        return view('Emplois du temps.index',['Emplois du temps'=>Seance::all()]);
 
     }
 
@@ -27,7 +27,7 @@ class SeanceController extends Controller
      */
     public function create()
     {
-        return view('Seances.create');
+        return view('Emplois du temps.create');
 
     }
 
@@ -63,7 +63,7 @@ class SeanceController extends Controller
      */
     public function show($misemestre)
     {
-        return view('Seances.show',['Seances'=>Seance::all()->where('misemestre','=',$misemestre)]);
+        return view('Emplois du temps.show',['Emplois du temps'=>Seance::all()->where('misemestre','=',$misemestre)]);
     }
 
     /**

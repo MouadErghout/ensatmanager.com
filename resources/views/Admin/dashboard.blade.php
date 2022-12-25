@@ -14,4 +14,4 @@
 <a href="Filiere">Gestion des Filieres</a><br>
 <a href="Module">Gestion des Modules</a><br>
 <a href="Elementmodule">Gestion des Elements des modules</a><br>
-<a href="Seances dashboard">Gestion d'emploi du temps</a><br>
+<a href="Emplois du temps/dashboard">Gestion d'emploi du temps</a><br>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE EmploisDuTemps SYSTEM "EMPLOIS.dtd">
+<EmploisDuTemps Niveau="GINF1">
+  <Emploi Misemestre="misemestre_1">
+    <Seance Prof="DRISSI" Sorte="TD" Jour="1" Temps="1" Salle="SALLE C5">Statistiques</Seance>
+    <Seance Prof="BOURIGUI" Sorte="Cours" Jour="1" Temps="2" Salle="SALL A7">Anglais 1 Espagnole 1</Seance>
+    <Seance Prof="DRISSI" Sorte="Cours" Jour="1" Temps="3" Salle="AMPHI 2">Statistiques</Seance>
+    <Seance Prof="TANANA" Sorte="Cours" Jour="1" Temps="4" Salle="AMPHI 2">Concepts fondamentaux réseaux</Seance>
+    <Seance Prof="EL HADDAD" Sorte="Cours" Jour="2" Temps="1" Salle="SALLE B19">Structure de données/Language C*</Seance>
+    <Seance Prof="EL HADDAD" Sorte="Cours" Jour="2" Temps="2" Salle="SALLE B19">Structure de données/Language C*</Seance>
+    <Seance Prof="MASSOU" Sorte="TD" Jour="2" Temps="3" Salle="SALLE C2">Traitement du signal</Seance>
+    <Seance Prof="OULKADI" Sorte="TD" Jour="2" Temps="4" Salle="SALLE B3">Electronique analogique</Seance>
+    <Seance Prof="MASSOU" Sorte="Cours" Jour="3" Temps="1" Salle="SALLE C2">Traitement du signal</Seance>
+    <Seance Prof="MASSOU" Sorte="Cours" Jour="3" Temps="2" Salle="SALLE C2">Traitement du signal</Seance>
+    <Seance Prof="EL HADDAD" Sorte="TP" Jour="3" Temps="3" Salle="SALLE B20">Structure de données/Language C*</Seance>
+    <Seance Prof="LAAMARTI" Sorte="Cours" Jour="4" Temps="1" Salle="SALLE C2">Anglais 1 Espagnole 1</Seance>
+    <Seance Prof="TANANA" Sorte="TD" Jour="5" Temps="1" Salle="SALLE C2">Concepts fondamentaux réseaux</Seance>
+    <Seance Prof="OULKADI" Sorte="Cours" Jour="5" Temps="2" Salle="SALLE C2">Electronique analogique</Seance>
+    <Seance Prof="ZAAMOUMI" Sorte="Cours" Jour="5" Temps="3" Salle="SALLE C6">Développement personnel</Seance>
+    <Seance Prof="ZAAMOUMI" Sorte="Cours" Jour="5" Temps="4" Salle="SALLE C6">Développement personnel</Seance>
+  </Emploi>
+</EmploisDuTemps>
