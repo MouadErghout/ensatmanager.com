@@ -2,21 +2,133 @@
 <!DOCTYPE EmploisDuTemps SYSTEM "EMPLOIS.dtd">
 <EmploisDuTemps Niveau="GINF1">
   <Emploi Misemestre="misemestre_1">
-    <Seance Prof="DRISSI" Sorte="TD" Jour="1" Temps="1" Salle="SALLE C5">Statistiques</Seance>
-    <Seance Prof="BOURIGUI" Sorte="Cours" Jour="1" Temps="2" Salle="SALL A7">Anglais 1 Espagnole 1</Seance>
-    <Seance Prof="DRISSI" Sorte="Cours" Jour="1" Temps="3" Salle="AMPHI 2">Statistiques</Seance>
-    <Seance Prof="TANANA" Sorte="Cours" Jour="1" Temps="4" Salle="AMPHI 2">Concepts fondamentaux réseaux</Seance>
-    <Seance Prof="EL HADDAD" Sorte="Cours" Jour="2" Temps="1" Salle="SALLE B19">Structure de données/Language C*</Seance>
-    <Seance Prof="EL HADDAD" Sorte="Cours" Jour="2" Temps="2" Salle="SALLE B19">Structure de données/Language C*</Seance>
-    <Seance Prof="MASSOU" Sorte="TD" Jour="2" Temps="3" Salle="SALLE C2">Traitement du signal</Seance>
-    <Seance Prof="OULKADI" Sorte="TD" Jour="2" Temps="4" Salle="SALLE B3">Electronique analogique</Seance>
-    <Seance Prof="MASSOU" Sorte="Cours" Jour="3" Temps="1" Salle="SALLE C2">Traitement du signal</Seance>
-    <Seance Prof="MASSOU" Sorte="Cours" Jour="3" Temps="2" Salle="SALLE C2">Traitement du signal</Seance>
-    <Seance Prof="EL HADDAD" Sorte="TP" Jour="3" Temps="3" Salle="SALLE B20">Structure de données/Language C*</Seance>
-    <Seance Prof="LAAMARTI" Sorte="Cours" Jour="4" Temps="1" Salle="SALLE C2">Anglais 1 Espagnole 1</Seance>
-    <Seance Prof="TANANA" Sorte="TD" Jour="5" Temps="1" Salle="SALLE C2">Concepts fondamentaux réseaux</Seance>
-    <Seance Prof="OULKADI" Sorte="Cours" Jour="5" Temps="2" Salle="SALLE C2">Electronique analogique</Seance>
-    <Seance Prof="ZAAMOUMI" Sorte="Cours" Jour="5" Temps="3" Salle="SALLE C6">Développement personnel</Seance>
-    <Seance Prof="ZAAMOUMI" Sorte="Cours" Jour="5" Temps="4" Salle="SALLE C6">Développement personnel</Seance>
+    <Seance>
+      <Matiere>Statistiques</Matiere>
+      <Sorte>TD</Sorte>
+      <Prof>DRISSI</Prof>
+      <Jour>1</Jour>
+      <Temps>1</Temps>
+      <Salle>SALLE C5</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Anglais 1 Espagnole 1</Matiere>
+      <Sorte>Cours</Sorte>
+      <Prof>BOURIGUI</Prof>
+      <Jour>1</Jour>
+      <Temps>2</Temps>
+      <Salle>SALL A7</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Statistiques</Matiere>
+      <Sorte>Cours</Sorte>
+      <Prof>DRISSI</Prof>
+      <Jour>1</Jour>
+      <Temps>3</Temps>
+      <Salle>AMPHI 2</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Concepts fondamentaux réseaux</Matiere>
+      <Sorte>Cours</Sorte>
+      <Prof>TANANA</Prof>
+      <Jour>1</Jour>
+      <Temps>4</Temps>
+      <Salle>AMPHI 2</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Structure de données/Language C*</Matiere>
+      <Sorte>Cours</Sorte>
+      <Prof>EL HADDAD</Prof>
+      <Jour>2</Jour>
+      <Temps>1</Temps>
+      <Salle>SALLE B19</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Structure de données/Language C*</Matiere>
+      <Sorte>Cours</Sorte>
+      <Prof>EL HADDAD</Prof>
+      <Jour>2</Jour>
+      <Temps>2</Temps>
+      <Salle>SALLE B19</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Traitement du signal</Matiere>
+      <Sorte>TD</Sorte>
+      <Prof>MASSOU</Prof>
+      <Jour>2</Jour>
+      <Temps>3</Temps>
+      <Salle>SALLE C2</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Electronique analogique</Matiere>
+      <Sorte>TD</Sorte>
+      <Prof>OULKADI</Prof>
+      <Jour>2</Jour>
+      <Temps>4</Temps>
+      <Salle>SALLE B3</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Traitement du signal</Matiere>
+      <Sorte>Cours</Sorte>
+      <Prof>MASSOU</Prof>
+      <Jour>3</Jour>
+      <Temps>1</Temps>
+      <Salle>SALLE C2</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Traitement du signal</Matiere>
+      <Sorte>Cours</Sorte>
+      <Prof>MASSOU</Prof>
+      <Jour>3</Jour>
+      <Temps>2</Temps>
+      <Salle>SALLE C2</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Structure de données/Language C*</Matiere>
+      <Sorte>TP</Sorte>
+      <Prof>EL HADDAD</Prof>
+      <Jour>3</Jour>
+      <Temps>3</Temps>
+      <Salle>SALLE B20</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Anglais 1 Espagnole 1</Matiere>
+      <Sorte>Cours</Sorte>
+      <Prof>LAAMARTI</Prof>
+      <Jour>4</Jour>
+      <Temps>1</Temps>
+      <Salle>SALLE C2</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Concepts fondamentaux réseaux</Matiere>
+      <Sorte>TD</Sorte>
+      <Prof>TANANA</Prof>
+      <Jour>5</Jour>
+      <Temps>1</Temps>
+      <Salle>SALLE C2</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Electronique analogique</Matiere>
+      <Sorte>Cours</Sorte>
+      <Prof>OULKADI</Prof>
+      <Jour>5</Jour>
+      <Temps>2</Temps>
+      <Salle>SALLE C2</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Développement personnel</Matiere>
+      <Sorte>Cours</Sorte>
+      <Prof>ZAAMOUMI</Prof>
+      <Jour>5</Jour>
+      <Temps>3</Temps>
+      <Salle>SALLE C6</Salle>
+    </Seance>
+    <Seance>
+      <Matiere>Développement personnel</Matiere>
+      <Sorte>Cours</Sorte>
+      <Prof>ZAAMOUMI</Prof>
+      <Jour>5</Jour>
+      <Temps>4</Temps>
+      <Salle>SALLE C6</Salle>
+    </Seance>
   </Emploi>
 </EmploisDuTemps>

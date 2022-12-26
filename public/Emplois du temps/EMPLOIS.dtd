@@ -3,10 +3,11 @@
     <!ATTLIST EmploisDuTemps Niveau ID #REQUIRED>
     <!ELEMENT Emploi (Seance+) >
     <!ATTLIST Emploi Misemestre ID #REQUIRED>
-    <!ELEMENT Seance (#PCDATA)>
-    <!ATTLIST Seance Prof CDATA #REQUIRED
-                     Sorte CDATA #REQUIRED
-                     Jour CDATA #REQUIRED
-                     Temps CDATA #REQUIRED
-                     Salle CDATA #REQUIRED>
+    <!ELEMENT Seance (Matiere,Sorte,Prof,Jour,Temps,Salle)>
+    <!ELEMENT Matiere (#PCDATA)>
+    <!ELEMENT Sorte (#PCDATA)>
+    <!ELEMENT Prof (#PCDATA)>
+    <!ELEMENT Jour (#PCDATA)>
+    <!ELEMENT Temps (#PCDATA)>
+    <!ELEMENT Salle (#PCDATA)>
 

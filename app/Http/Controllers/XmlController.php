@@ -99,31 +99,6 @@ class XmlController extends Controller
                     <a href='/dashboard'>Revenir au dashboard</a><br></center>";
     }
 
-    public function IsValidDTD($filePath)
-    {
-        $xml = new DOMDocument;
-        if($xml->load($filePath)){
-            if(!$xml->validate()){
-                File::delete($filePath);
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
-    public function IsValidSchema($xmlPath,$xsdPath)
-    {
-        $xml = new DOMDocument;
-        if($xml->load($xmlPath)){
-            if(!$xml->schemaValidate($xsdPath)){
-                File::delete($xmlPath);
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
-
     public function XMLReleve($id)
     {
         $dom = new DOMDocument();
@@ -241,18 +216,20 @@ class XmlController extends Controller
             $mismestre = new DOMAttr('Misemestre', 'misemestre_'.$i);
             $Emploi->setAttributeNode($mismestre);
             $Seances = Seance::all()->where('niveau','=',$Classe)->where('misemestre','=',$i);
-            foreach ($Seances as $Seance) {
-                $seance = $dom->createElement('Seance',$Seance->element_module);
-                $Prof = new DOMAttr('Prof', $Seance->prof);
-                $Sorte = new DOMAttr('Sorte', $Seance->type);
-                $Jour = new DOMAttr('Jour', $Seance->jour);
-                $Temps = new DOMAttr('Temps', $Seance->temps);
-                $Salle = new DOMAttr('Salle', $Seance->salle);
-                $seance->setAttributeNode($Prof);
-                $seance->setAttributeNode($Sorte);
-                $seance->setAttributeNode($Jour);
-                $seance->setAttributeNode($Temps);
-                $seance->setAttributeNode($Salle);
+            foreach ($Seances as $Seance){
+                $seance = $dom->createElement('Seance');
+                $Matiere = $dom->createElement('Matiere',$Seance->element_module);
+                $Sorte = $dom->createElement('Sorte', $Seance->type);
+                $Prof = $dom->createElement('Prof', $Seance->prof);
+                $Jour = $dom->createElement('Jour', $Seance->jour);
+                $Temps = $dom->createElement('Temps', $Seance->temps);
+                $Salle = $dom->createElement('Salle', $Seance->salle);
+                $seance->appendChild($Matiere);
+                $seance->appendChild($Sorte);
+                $seance->appendChild($Prof);
+                $seance->appendChild($Jour);
+                $seance->appendChild($Temps);
+                $seance->appendChild($Salle);
                 $Emploi->appendChild($seance);
             }
             $Emplois->appendChild($Emploi);
@@ -265,7 +242,33 @@ class XmlController extends Controller
         //---------Schema Validation------------------
         if($this->IsValidSchema($xml_file_name,'Emplois du temps/EMPLOIS.xsd'))
             echo "<h1>Schema valid</h1><br>
-                    <h2>Les releves de notes ont bien été mises à jour</h2><br>
+                    <h2>Les emplois du temps ont bien été mises à jour</h2><br>
                     <a href='/dashboard'>Revenir au dashboard</a><br></center>";
+    }
+
+    public function IsValidDTD($filePath)
+    {
+        $xml = new DOMDocument;
+        if($xml->load($filePath)){
+            if(!$xml->validate()){
+                File::delete($filePath);
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public function IsValidSchema($xmlPath,$xsdPath)
+    {
+        $xml = new DOMDocument;
+        if($xml->load($xmlPath)){
+            if(!$xml->schemaValidate($xsdPath)){
+                File::delete($xmlPath);
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 }
