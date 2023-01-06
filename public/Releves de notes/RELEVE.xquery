@@ -1,2 +1,2 @@
 
-<Releve>{doc("GINF1.xml")//Eleve[@id="LF54111"]}</Releve>
+<Releve>{doc("AP2.xml")//Eleve[@id="R486497"]}</Releve>
