@@ -190,6 +190,7 @@ class XmlController extends Controller
         //---------DTD Validation--------------------
         if($this->IsValidDTD($xml_file_name))
             echo "<center><h1>DTD Valid</h1>";
+
         //---------Schema Validation------------------
         if($this->IsValidSchema($xml_file_name,'Cartes des etudiants/EMPLOIS.xsd'))
             echo "<h1>Schema valid</h1><br>
