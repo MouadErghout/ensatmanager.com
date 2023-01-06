@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <!ELEMENT EmploisDuTemps (Emploi+) >
+    <!ATTLIST EmploisDuTemps Niveau ID #REQUIRED>
+    <!ELEMENT Emploi (Seance+) >
+    <!ATTLIST Emploi Misemestre ID #REQUIRED>
+    <!ELEMENT Seance (Matiere,Sorte,Prof,Jour,Temps,Salle)>
+    <!ELEMENT Matiere (#PCDATA)>
+    <!ELEMENT Sorte (#PCDATA)>
+    <!ELEMENT Prof (#PCDATA)>
+    <!ELEMENT Jour (#PCDATA)>
+    <!ELEMENT Temps (#PCDATA)>
+    <!ELEMENT Salle (#PCDATA)>
+

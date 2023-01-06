@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Eleve;
 use App\Models\Module;
 use App\Models\Note;
+use App\Models\Seance;
 use App\Models\User;
 use DOMAttr;
 use DOMDocument;
@@ -96,37 +97,20 @@ class XmlController extends Controller
             echo "<h1>Schema valid</h1><br>
                     <h2>Les releves de notes ont bien été mises à jour</h2><br>
                     <a href='/dashboard'>Revenir au dashboard</a><br></center>";
-
-        //return Redirect('/Eleve');
-    }
-
-    public function IsValidDTD($filePath)
-    {
-        $xml = new DOMDocument;
-        if($xml->load($filePath)){
-            if(!$xml->validate()){
-                File::delete($filePath);
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
-    public function IsValidSchema($xmlPath,$xsdPath)
-    {
-        $xml = new DOMDocument;
-        if($xml->load($xmlPath)){
-            if(!$xml->schemaValidate($xsdPath)){
-                File::delete($xmlPath);
-                return false;
-            }
-            return true;
-        }
-        return false;
     }
 
     public function XMLReleve($id)
     {
+        $xq = xq_new();
+        xq_load_file($xq, '/path/to/query.xq');
+        $result = xq_execute($xq);
+
+        $xml = xq_get_result($result);
+
+        $fp = fopen('/path/to/output.xml', 'w');
+        fwrite($fp, $xml);
+        fclose($fp);
+
         $dom = new DOMDocument();
         $dom->encoding = 'UTF-8';
         $dom->xmlVersion = '1.0';
@@ -166,7 +150,7 @@ class XmlController extends Controller
         $dom->xmlStandalone = false;
         $dom->formatOutput = true;
         $implement  = new DOMImplementation();
-        $dom->appendChild($implement->createDocumentType('Cartes SYSTEM "CARTES.dtd"'));
+        $dom->appendChild($implement->createDocumentType('Cartes SYSTEM "EMPLOIS.dtd"'));
 
         $xml_file_name = 'Cartes des etudiants/'.$Classe.'.xml';
 
@@ -206,11 +190,97 @@ class XmlController extends Controller
         //---------DTD Validation--------------------
         if($this->IsValidDTD($xml_file_name))
             echo "<center><h1>DTD Valid</h1>";
+
         //---------Schema Validation------------------
-        if($this->IsValidSchema($xml_file_name,'Cartes des etudiants/CARTES.xsd'))
+        if($this->IsValidSchema($xml_file_name,'Cartes des etudiants/EMPLOIS.xsd'))
             echo "<h1>Schema valid</h1><br>
                     <h2>Les cartes des etudiants ont bien été mises à jour</h2><br>
                     <a href='/dashboard'>Revenir au dashboard</a><br></center>";
 
+    }
+
+    public function XMLEmplois($Classe)
+    {
+
+        $dom = new DOMDocument();
+        $dom->encoding = 'UTF-8';
+        $dom->xmlVersion = '1.0';
+        $dom->xmlStandalone = false;
+        $dom->formatOutput = true;
+        $implement  = new DOMImplementation();
+        $dom->appendChild($implement->createDocumentType('EmploisDuTemps SYSTEM "EMPLOIS.dtd"'));
+
+        $xml_file_name = 'Emplois du temps/'.$Classe.'.xml';
+
+        $Emplois = $dom->createElement('EmploisDuTemps');
+        $niveau = new DOMAttr('Niveau',"$Classe");
+        /*$xmlns = new DOMAttr('xmlns',"https://www.w3schools.com");
+        $xmlns_xsi = new DOMAttr('xmlns:xsi',"http://www.w3.org/2001/XMLSchema-instance");
+        $xsi_schemaLocation = new DOMAttr('xsi:schemaLocation',"https://www.w3schools.com/xml RELEVES.xsd");*/
+        $Emplois->setAttributeNode($niveau);
+        /*$Eleves->setAttributeNode($xmlns);
+        $Eleves->setAttributeNode($xmlns_xsi);
+        $Eleves->setAttributeNode($xsi_schemaLocation);*/
+
+        for($i=1;$i<2;$i++)
+        {
+            $Emploi = $dom->createElement('Emploi');
+            $mismestre = new DOMAttr('Misemestre', 'misemestre_'.$i);
+            $Emploi->setAttributeNode($mismestre);
+            $Seances = Seance::all()->where('niveau','=',$Classe)->where('misemestre','=',$i);
+            foreach ($Seances as $Seance){
+                $seance = $dom->createElement('Seance');
+                $Matiere = $dom->createElement('Matiere',$Seance->element_module);
+                $Sorte = $dom->createElement('Sorte', $Seance->type);
+                $Prof = $dom->createElement('Prof', $Seance->prof);
+                $Jour = $dom->createElement('Jour', $Seance->jour);
+                $Temps = $dom->createElement('Temps', $Seance->temps);
+                $Salle = $dom->createElement('Salle', $Seance->salle);
+                $seance->appendChild($Matiere);
+                $seance->appendChild($Sorte);
+                $seance->appendChild($Prof);
+                $seance->appendChild($Jour);
+                $seance->appendChild($Temps);
+                $seance->appendChild($Salle);
+                $Emploi->appendChild($seance);
+            }
+            $Emplois->appendChild($Emploi);
+        }
+        $dom->appendChild($Emplois);
+        $dom->save($xml_file_name);
+        //---------DTD Validation--------------------
+        if($this->IsValidDTD($xml_file_name))
+            echo "<center><h1>DTD Valid</h1></br>";
+        //---------Schema Validation------------------
+        if($this->IsValidSchema($xml_file_name,'Emplois du temps/EMPLOIS.xsd'))
+            echo "<h1>Schema valid</h1><br>
+                    <h2>Les emplois du temps ont bien été mises à jour</h2><br>
+                    <a href='/dashboard'>Revenir au dashboard</a><br></center>";
+    }
+
+    public function IsValidDTD($filePath)
+    {
+        $xml = new DOMDocument;
+        if($xml->load($filePath)){
+            if(!$xml->validate()){
+                File::delete($filePath);
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public function IsValidSchema($xmlPath,$xsdPath)
+    {
+        $xml = new DOMDocument;
+        if($xml->load($xmlPath)){
+            if(!$xml->schemaValidate($xsdPath)){
+                File::delete($xmlPath);
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
 }
