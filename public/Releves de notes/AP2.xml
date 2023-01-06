@@ -89,7 +89,7 @@
       </Element_module>
       <Note>9.5</Note>
     </Module>
-    <Moyenne>10.458333333333</Moyenne>
+    <Moyenne>10.45</Moyenne>
   </Eleve>
   <Eleve id="S654891" nom="Dimarco" prenom="Hicham">
     <Module id="AP31" designation="Algébre 3">
@@ -179,7 +179,7 @@
       </Element_module>
       <Note>12</Note>
     </Module>
-    <Moyenne>11.833333333333</Moyenne>
+    <Moyenne>11.833</Moyenne>
   </Eleve>
   <Eleve id="F125480" nom="Bourqadi" prenom="Oussama">
     <Module id="AP31" designation="Algébre 3">
@@ -269,7 +269,7 @@
       </Element_module>
       <Note>8.5</Note>
     </Module>
-    <Moyenne>11.833333333333</Moyenne>
+    <Moyenne>11.833</Moyenne>
   </Eleve>
   <Eleve id="R486497" nom="BOULOUQAT" prenom="Jawad">
     <Module id="AP31" designation="Algébre 3">
@@ -359,7 +359,7 @@
       </Element_module>
       <Note>10</Note>
     </Module>
-    <Moyenne>9.9166666666667</Moyenne>
+    <Moyenne>9.916</Moyenne>
   </Eleve>
   <Eleve id="V154896" nom="Boudan" prenom="Ahmed">
     <Module id="AP31" designation="Algébre 3">
@@ -449,7 +449,7 @@
       </Element_module>
       <Note>17.5</Note>
     </Module>
-    <Moyenne>13.291666666667</Moyenne>
+    <Moyenne>13.291</Moyenne>
   </Eleve>
   <Eleve id="D12649" nom="Najari" prenom="Fadil">
     <Module id="AP31" designation="Algébre 3">
@@ -539,7 +539,7 @@
       </Element_module>
       <Note>11.5</Note>
     </Module>
-    <Moyenne>12.666666666667</Moyenne>
+    <Moyenne>12.66</Moyenne>
   </Eleve>
   <Eleve id="X845793" nom="Aznagui" prenom="Mohamed">
     <Module id="AP31" designation="Algébre 3">
@@ -629,7 +629,7 @@
       </Element_module>
       <Note>12.5</Note>
     </Module>
-    <Moyenne>11.041666666667</Moyenne>
+    <Moyenne>11.0416</Moyenne>
   </Eleve>
   <Eleve id="J458293" nom="Aouad" prenom="Sami">
     <Module id="AP31" designation="Algébre 3">
@@ -719,7 +719,7 @@
       </Element_module>
       <Note>13</Note>
     </Module>
-    <Moyenne>13.291666666667</Moyenne>
+    <Moyenne>13.291</Moyenne>
   </Eleve>
   <Eleve id="KL156497" nom="Chitouh" prenom="Zakaria">
     <Module id="AP31" designation="Algébre 3">
@@ -809,7 +809,7 @@
       </Element_module>
       <Note>11.7</Note>
     </Module>
-    <Moyenne>11.891666666667</Moyenne>
+    <Moyenne>11.891</Moyenne>
   </Eleve>
   <Moyenne_generale>11.802777777778</Moyenne_generale>
 </Eleves>
