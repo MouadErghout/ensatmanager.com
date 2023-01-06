@@ -67,5 +67,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
-
+//Test XML
+Route::get('/xmltest',[\App\Http\Controllers\XmlController::class,'index']);
+Route::get('/xmltestdisplay',[\App\Http\Controllers\XmlController::class,'display']);
 

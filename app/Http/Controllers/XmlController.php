@@ -195,6 +195,7 @@ class XmlController extends Controller
             echo "<h1>Schema valid</h1><br>
                     <h2>Les cartes des etudiants ont bien été mises à jour</h2><br>
                     <a href='/dashboard'>Revenir au dashboard</a><br></center>";
+
     }
 
     public function XMLEmplois($Classe)
