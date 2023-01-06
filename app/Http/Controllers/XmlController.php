@@ -101,6 +101,16 @@ class XmlController extends Controller
 
     public function XMLReleve($id)
     {
+        $xq = xq_new();
+        xq_load_file($xq, '/path/to/query.xq');
+        $result = xq_execute($xq);
+
+        $xml = xq_get_result($result);
+
+        $fp = fopen('/path/to/output.xml', 'w');
+        fwrite($fp, $xml);
+        fclose($fp);
+
         $dom = new DOMDocument();
         $dom->encoding = 'UTF-8';
         $dom->xmlVersion = '1.0';
