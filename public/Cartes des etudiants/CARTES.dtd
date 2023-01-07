@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
     <!ELEMENT Cartes (Carte+) >
     <!ATTLIST Cartes Niveau ID #REQUIRED>
-    <!ELEMENT Carte (Nom,Prenom,CodeApogee,Filiere,Niveau,Email,Image) >
+    <!ELEMENT Carte (logoUae,nameUae,nameSchool,villeSchool,logoEnsa,title,Nom,Prenom,codeApogee,Filiere,Niveau,Email,Image,scanBar,footer) >
     <!ATTLIST Carte id ID #REQUIRED>
+    <!ELEMENT logoUae EMPTY>
+    <!ATTLIST logoUae uri CDATA #REQUIRED>
+    <!ELEMENT nameUae  (#PCDATA)>
+    <!ELEMENT nameSchool  (#PCDATA)>
+    <!ELEMENT villeSchool  (#PCDATA)>
+    <!ELEMENT logoEnsa EMPTY>
+    <!ATTLIST logoEnsa uri CDATA #REQUIRED>
+    <!ELEMENT title  (#PCDATA)>
     <!ELEMENT Nom  (#PCDATA)>
     <!ELEMENT Prenom (#PCDATA)>
-    <!ELEMENT CodeApogee (#PCDATA)>
+    <!ELEMENT codeApogee (#PCDATA)>
     <!ELEMENT Filiere (#PCDATA)>
     <!ELEMENT Niveau (#PCDATA)>
     <!ELEMENT Email (#PCDATA)>
-    <!ELEMENT Image (#PCDATA)>
+    <!ELEMENT Image EMPTY>
+    <!ATTLIST Image uri CDATA #IMPLIED>
+    <!ELEMENT scanBar EMPTY>
+    <!ATTLIST scanBar uri CDATA #IMPLIED>
+    <!ELEMENT footer (#PCDATA)>
+

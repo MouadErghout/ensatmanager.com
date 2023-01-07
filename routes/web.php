@@ -63,7 +63,10 @@ Route::middleware('auth')->group(function () {
         Route::get('Emplois du temps/{Classe}',[XmlController::class,'XMLEmplois']);
 
     });
-    Route::get('Releve de note/{id}',[XmlController::class,'XMLReleve']);
+    Route::get('Releve de note/{id}',[EleveController::class,'releve']);
+    Route::get('Carte etudiant/{id}',[EleveController::class,'carte']);
+
+    Route::post('store-image/{id}',[EleveController::class,'storeImage']);
 });
 
 require __DIR__.'/auth.php';

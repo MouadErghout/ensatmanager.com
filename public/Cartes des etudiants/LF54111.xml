@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Carte id="LF54111">
+    <logoUae uri="logoUae.png"/>
+    <nameUae>Université Abdelmalek Essaâdi</nameUae>
+    <nameSchool>Ecole Nationale des Sciences Appliquées</nameSchool>
+    <villeSchool>Tanger</villeSchool>
+    <logoEnsa uri="ensat.png"/>
+    <title>CARTE D'ETUDIANT</title>
+    <Nom>ERGHOUT</Nom>
+    <Prenom>Mouad</Prenom>
+    <codeApogee>LF54111</codeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>mouad.erghout.5@gmail.com</Email>
+    <Image uri="images/ProfilePicturePhoto.jpg"/>
+    <scanBar uri="scanbar.png"/>
+    <footer>Première Inscription : 2019 / 2020</footer>
+</Carte>

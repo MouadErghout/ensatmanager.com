@@ -117,4 +117,47 @@ class EleveController extends Controller
     {
         //
     }
+
+    public function  releve($id)
+    {
+        $E=Eleve::find($id);
+        $path = public_path('Releves de notes/' .$E->code.'.pdf');
+        // header
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $E->code.'.pdf' . '"'
+        ];
+        return response()->file($path, $header);
+    }
+
+    public function  carte($id)
+    {
+        $E=Eleve::find($id);
+        $path = public_path('Cartes des etudiants/' .$E->code.'.pdf');
+        // header
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $E->code.'.pdf' . '"'
+        ];
+        return response()->file($path, $header);
+    }
+
+    public function storeImage(Request $request,$id)
+    {
+        $E=Eleve::find($id);
+
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= $file->getClientOriginalName();
+            $file-> move(public_path('Cartes des etudiants/images'), $filename);
+            $E->photo= $filename;
+        }
+        $E->save();
+        return Redirect('/dashboard');
+    }
+
+    public function viewImage()
+    {
+
+    }
 }

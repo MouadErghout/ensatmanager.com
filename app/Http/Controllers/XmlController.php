@@ -150,31 +150,47 @@ class XmlController extends Controller
         $dom->xmlStandalone = false;
         $dom->formatOutput = true;
         $implement  = new DOMImplementation();
-        $dom->appendChild($implement->createDocumentType('Cartes SYSTEM "EMPLOIS.dtd"'));
+        $dom->appendChild($implement->createDocumentType('Cartes SYSTEM "CARTES.dtd"'));
 
         $xml_file_name = 'Cartes des etudiants/'.$Classe.'.xml';
 
         $Cartes = $dom->createElement('Cartes');
         $niveau = new DOMAttr('Niveau',"$Classe");
         $Cartes->setAttributeNode($niveau);
-        /*$xmlns = new DOMAttr('xmlns',"https://www.w3schools.com");
-        $xmlns_xsi = new DOMAttr('xmlns:xsi',"http://www.w3.org/2001/XMLSchema-instance");
-        $xsi_schemaLocation = new DOMAttr('xsi:schemaLocation',"https://www.w3schools.com/xml RELEVES.xsd");*/
-        /*$Eleves->setAttributeNode($xmlns);
-        $Eleves->setAttributeNode($xmlns_xsi);
-        $Eleves->setAttributeNode($xsi_schemaLocation);*/
         $eleves = Eleve::all()->where('niveau','=',$Classe);
         foreach ($eleves as $eleve) {
             $carte = $dom->createElement('Carte');
             $code = new DOMAttr('id', $eleve->code);
             $carte->setAttributeNode($code);
+            $logoUae = $dom->createElement('logoUae');
+            $uriLogoUae = new DOMAttr('uri', 'logoUae.png');
+            $logoUae->setAttributeNode($uriLogoUae);
+            $nameUae = $dom->createElement('nameUae', 'Université Abdelmalek Essaâdi');
+            $nameSchool = $dom->createElement('nameSchool', 'Ecole Nationale des Sciences Appliquées');
+            $villeSchool = $dom->createElement('villeSchool', 'Tanger');
+            $logoEnsa = $dom->createElement('logoEnsa');
+            $uriLogoEnsa = new DOMAttr('uri', 'ensat.png');
+            $logoEnsa->setAttributeNode($uriLogoEnsa);
+            $title = $dom->createElement('title', "CARTE D'ETUDIANT");
             $Nom = $dom->createElement('Nom', $eleve->nom);
             $Prenom = $dom->createElement('Prenom', $eleve->prenom);
-            $CodeApogee = $dom->createElement('CodeApogee', $eleve->code);
+            $CodeApogee = $dom->createElement('codeApogee', $eleve->code);
             $Filiere = $dom->createElement('Filiere', $eleve->filiere_code);
             $Niveau = $dom->createElement('Niveau', $eleve->niveau);
             $Email = $dom->createElement('Email', $eleve->User->email);
-            $Image = $dom->createElement('Image', $eleve->photo);
+            $Image = $dom->createElement('Image');
+            $uriImage = new DOMAttr('uri', 'images/'.$eleve->photo);
+            $Image->setAttributeNode($uriImage);
+            $Scanbar = $dom->createElement('scanBar');
+            $uriScanBar = new DOMAttr('uri', 'scanbar.png');
+            $footer = $dom->createElement('footer','Première Inscription : 2019 / 2020');
+            $Scanbar->setAttributeNode($uriScanBar);
+            $carte->appendChild($logoUae);
+            $carte->appendChild($nameUae);
+            $carte->appendChild($nameSchool);
+            $carte->appendChild($villeSchool);
+            $carte->appendChild($logoEnsa);
+            $carte->appendChild($title);
             $carte->appendChild($Nom);
             $carte->appendChild($Prenom);
             $carte->appendChild($CodeApogee);
@@ -182,6 +198,8 @@ class XmlController extends Controller
             $carte->appendChild($Niveau);
             $carte->appendChild($Email);
             $carte->appendChild($Image);
+            $carte->appendChild($Scanbar);
+            $carte->appendChild($footer);
             $Cartes->appendChild($carte);
         }
         $dom->appendChild($Cartes);
@@ -192,7 +210,7 @@ class XmlController extends Controller
             echo "<center><h1>DTD Valid</h1>";
 
         //---------Schema Validation------------------
-        if($this->IsValidSchema($xml_file_name,'Cartes des etudiants/EMPLOIS.xsd'))
+        if($this->IsValidSchema($xml_file_name,'Cartes des etudiants/CARTES.xsd'))
             echo "<h1>Schema valid</h1><br>
                     <h2>Les cartes des etudiants ont bien été mises à jour</h2><br>
                     <a href='/dashboard'>Revenir au dashboard</a><br></center>";
