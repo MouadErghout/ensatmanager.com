@@ -7,13 +7,37 @@
                 <xs:element name="Carte" minOccurs="0" maxOccurs="10">
                     <xs:complexType>
                         <xs:sequence>
+                            <xs:element name="logoUae">
+                                <xs:complexType>
+                                    <xs:attribute name="uri" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="nameUae" type="xs:string"/>
+                            <xs:element name="nameSchool" type="xs:string"/>
+                            <xs:element name="villeSchool" type="xs:string"/>
+                            <xs:element name="logoEnsa">
+                                <xs:complexType>
+                                    <xs:attribute name="uri" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="title" type="xs:string"/>
                             <xs:element name="Nom" type="xs:string"/>
                             <xs:element name="Prenom" type="xs:string"/>
-                            <xs:element name="CodeApogee" type="xs:string"/>
+                            <xs:element name="codeApogee" type="xs:string"/>
                             <xs:element name="Filiere" type="xs:string"/>
                             <xs:element name="Niveau" type="xs:string"/>
                             <xs:element name="Email" type="xs:string"/>
-                            <xs:element name="Image" type="xs:string"/>
+                            <xs:element name="Image">
+                                <xs:complexType>
+                                    <xs:attribute name="uri" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="scanBar">
+                                <xs:complexType>
+                                    <xs:attribute name="uri" type="xs:string"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="footer" type="xs:string"/>
                         </xs:sequence>
                         <xs:attribute name="id" type="xs:string"/>
                     </xs:complexType>

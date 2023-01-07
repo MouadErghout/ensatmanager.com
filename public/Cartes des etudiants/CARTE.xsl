@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
-    xmlns:b="http://studentcard.org"
     xmlns:fo="http://www.w3.org/1999/XSL/Format"
     version="2.0">
-    <xsl:template match="b:card">
+    <xsl:template match="Carte">
         <fo:root>
             <fo:layout-master-set>
                 <fo:simple-page-master master-name="simple" page-height="3.5cm" page-width="6.3cm" >
@@ -12,7 +11,7 @@
             </fo:layout-master-set>
             <fo:page-sequence master-reference="simple">
                 <fo:flow flow-name="xsl-region-body">
-                <!-- TOP BAR -->    
+                    <!-- TOP BAR -->    
                     <fo:table table-layout="fixed">
                         <fo:table-column column-width="1cm"/>
                         <fo:table-column column-width="3.5cm"/>
@@ -20,48 +19,48 @@
                         <fo:table-body>
                             <fo:table-row>
                                 <fo:table-cell width="1cm" >
-                                        <xsl:if test="b:logoUae">
-                                            <fo:block >
-                                                <fo:external-graphic 
-                                                    src="logoUae.png" 
-                                                    content-height="scale-to-fit"
-                                                    content-width="scale-to-fit"
-                                                    width="0.9cm"
-                                                     height="0.7cm"
-                                                     scaling="non-uniform"
-                                                    />
-                                            </fo:block>
-                                        </xsl:if>
-                                  </fo:table-cell>
-                                   
+                                    <xsl:if test="logoUae">
+                                        <fo:block >
+                                            <fo:external-graphic 
+                                                src="logoUae.png" 
+                                                content-height="scale-to-fit"
+                                                content-width="scale-to-fit"
+                                                width="0.9cm"
+                                                height="0.7cm"
+                                                scaling="non-uniform"
+                                            />
+                                        </fo:block>
+                                    </xsl:if>
+                                </fo:table-cell>
+                                
                                 <fo:table-cell width="4cm" height="1cm">
                                     <fo:block font-family="Roboto" font-size="8px" color="#02306E" text-align="center" margin-top="0.05cm" margin-bottom="-0.02cm">
-                                           <xsl:value-of select="b:nameUae"/>
-                                       </fo:block>
-                                    <fo:block font-family="Roboto" font-size="8px" color="#02306E" text-align="center"  margin-bottom="-0.02cm">
-                                           <xsl:value-of select="b:nameSchool"/>
-                                       </fo:block>
-                                    <fo:block font-family="Roboto" font-size="8px" color="#02306E" text-align="center"  margin-bottom="-0.02cm">
-                                        <xsl:value-of select="b:villeSchool"/>
+                                        <xsl:value-of select="nameUae"/>
                                     </fo:block>
-                                   </fo:table-cell>
-                                        
-                                    
+                                    <fo:block font-family="Roboto" font-size="8px" color="#02306E" text-align="center"  margin-bottom="-0.02cm">
+                                        <xsl:value-of select="nameSchool"/>
+                                    </fo:block>
+                                    <fo:block font-family="Roboto" font-size="8px" color="#02306E" text-align="center"  margin-bottom="-0.02cm">
+                                        <xsl:value-of select="villeSchool"/>
+                                    </fo:block>
+                                </fo:table-cell>
+                                
+                                
                                 <fo:table-cell width="0.8cm" >
-                                        <xsl:if test="b:logoEnsa">
-                                            <fo:block >
-                                                <fo:external-graphic 
-                                                    src="ensa.png"
-                                                    content-height="scale-to-fit"
-                                                    content-width="scale-to-fit"
-                                                    width="1cm"
-                                                    height="0.7cm"
-                                                    scaling="non-uniform"
-                                                />
-                                            </fo:block>
-                                        </xsl:if>
-                                    </fo:table-cell> 
-                           </fo:table-row>
+                                    <xsl:if test="logoEnsa">
+                                        <fo:block >
+                                            <fo:external-graphic 
+                                                src="ensa.png"
+                                                content-height="scale-to-fit"
+                                                content-width="scale-to-fit"
+                                                width="1cm"
+                                                height="0.7cm"
+                                                scaling="non-uniform"
+                                            />
+                                        </fo:block>
+                                    </xsl:if>
+                                </fo:table-cell> 
+                            </fo:table-row>
                         </fo:table-body>
                         
                     </fo:table>
@@ -96,7 +95,7 @@
                                     <fo:block width="6.3cm"  margin-top="-0.05cm"
                                         font-size="11px" color="#02306E" 
                                         margin-left="1.9cm" font-weight="200">
-                                        <xsl:value-of select="b:title"/>
+                                        <xsl:value-of select="title"/>
                                     </fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
@@ -113,10 +112,13 @@
                         <fo:table-body>
                             <fo:table-row>
                                 <fo:table-cell width="1.3cm" >
-                                    <xsl:if test="b:photo">
+                                    <xsl:if test="Image">
+                                        <xsl:variable name="img">
+                                            <xsl:value-of select="/Image/@uri"/>
+                                        </xsl:variable>
                                         <fo:block margin-left="0.2cm" >
                                             <fo:external-graphic 
-                                                src="sal3.jpg" 
+                                                src="images/ProfilePicturePhoto.jpg"
                                                 content-height="scale-to-fit"
                                                 content-width="scale-to-fit"
                                                 width="1.2cm"
@@ -129,19 +131,19 @@
                                 
                                 <fo:table-cell width="2.9cm" height="1cm">
                                     <fo:block font-family="Roboto" font-size="9px" color="#02306E" margin-left="0.2cm" margin-top="0.5cm" margin-bottom="0.04cm">
-                                        <xsl:value-of select="b:lastName"/>
+                                        <xsl:value-of select="Nom"/>
                                     </fo:block>
                                     <fo:block font-family="Roboto" font-size="9px" color="#02306E"  margin-left="0.2cm"  margin-bottom="0.04cm">
-                                        <xsl:value-of select="b:firstName"/>
+                                        <xsl:value-of select="Prenom"/>
                                     </fo:block>
                                     <fo:block font-family="Roboto" font-size="9px" color="#02306E"   margin-left="0.2cm" margin-bottom="0.04cm">
-                                        <xsl:value-of select="b:codeApoge"/>
+                                        <xsl:value-of select="codeApogee"/>
                                     </fo:block>
                                 </fo:table-cell>
                                 
                                 
                                 <fo:table-cell width="1.3cm" >
-                                    <xsl:if test="b:scanBar" >
+                                    <xsl:if test="scanBar" >
                                         <fo:block margin-left="0.7cm" margin-top="0.2cm">
                                             <fo:external-graphic 
                                                 src="scanbar.png"
@@ -171,7 +173,7 @@
                                         font-weight="200"
                                         font-size="10px" color="#02306E" 
                                         margin-left="1.6cm">
-                                        <xsl:value-of select="b:footer"/>
+                                        <xsl:value-of select="footer"/>
                                     </fo:block>
                                 </fo:table-cell>
                             </fo:table-row>
