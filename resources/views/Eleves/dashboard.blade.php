@@ -8,29 +8,49 @@
         {{ __('Log Out') }}
     </x-dropdown-link>
 </form>
-<a href="Note">Note et Resultas</a>
+<a href="/Releve de note/{{$Eleve->id}}">Note et Resultas</a><br><br>
+<a href="/Carte etudiant/{{$Eleve->id}}">Carte d'etudiant</a><br><br>
+<a href="/Emploi du temps/{{$Eleve->id}}">Emploi du temps</a><br><br>
+<a href="/Attestation de scolarite/{{$Eleve->id}}">Attestation de scolarité</a>
 <center>
+    @if($Eleve->photo)
+        <div class="container">
+            <img src="{{ url('Cartes des etudiants/images/'.$Eleve->photo) }}"
+                 style="height: 100px; width: 150px;">
+        </div>
+    @else
+        <div class="container">
+            <form method="post" action="store-image/{{$Eleve->id}}"
+                  enctype="multipart/form-data">
+                @csrf
+                <div class="image">
+                    <input type="file" class="form-control" required name="image">
+                </div>
+
+                <div class="post_button">
+                    <button type="submit" class="btn btn-success">Add</button>
+                </div>
+            </form>
+        </div>
+    @endif
     <h1>{{$Eleve->nom.' '.$Eleve->prenom}}</h1>
-    <form action='/Filiere' method='POST'>
-        @csrf
-        <table>
-            <tr>
-                <td>Code Apogee</td>
-                <td>{{$Eleve->code}}</td>
-            </tr>
-            <tr>
-                <td>Filiere</td>
-                <td>{{$Eleve->filiere}}</td>
-            </tr>
-            <tr>
-                <td>Niveau</td>
-                <td>{{$Eleve->niveau}}</td>
-            </tr>
-            <tr>
-                <td>Email</td>
-                <td>{{$User->email}}</td>
-            </tr>
-        </table>
-    </form>
+    <table>
+        <tr>
+            <td>Code Apogee</td>
+            <td>{{$Eleve->code}}</td>
+        </tr>
+        <tr>
+            <td>Filiere</td>
+            <td>{{$Eleve->filiere_code}}</td>
+        </tr>
+        <tr>
+            <td>Niveau</td>
+            <td>{{$Eleve->niveau}}</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>{{$User->email}}</td>
+        </tr>
+    </table>
 </center>
 

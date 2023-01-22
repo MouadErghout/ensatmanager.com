@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Cartes SYSTEM "CARTES.dtd">
+<Cartes Niveau="GINF1">
+  <Carte id="K123456">
+    <logoUae uri="logoUae.png"/>
+    <nameUae>Université Abdelmalek Essaâdi</nameUae>
+    <nameSchool>Ecole Nationale des Sciences Appliquées</nameSchool>
+    <villeSchool>Tanger</villeSchool>
+    <logoEnsa uri="ensat.png"/>
+    <title>CARTE D'ETUDIANT</title>
+    <Nom>BOULOUQAT</Nom>
+    <Prenom>Jawad</Prenom>
+    <codeApogee>K123456</codeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>jawad.boulouqat@gmail.com</Email>
+    <Image uri="images/"/>
+    <scanBar uri="scanbar.png"/>
+    <footer>Première Inscription : 2019 / 2020</footer>
+  </Carte>
+  <Carte id="LF54111">
+    <logoUae uri="logoUae.png"/>
+    <nameUae>Université Abdelmalek Essaâdi</nameUae>
+    <nameSchool>Ecole Nationale des Sciences Appliquées</nameSchool>
+    <villeSchool>Tanger</villeSchool>
+    <logoEnsa uri="ensat.png"/>
+    <title>CARTE D'ETUDIANT</title>
+    <Nom>ERGHOUT</Nom>
+    <Prenom>Mouad</Prenom>
+    <codeApogee>LF54111</codeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>mouad.erghout.5@gmail.com</Email>
+    <Image uri="images/ProfilePicturePhoto.jpg"/>
+    <scanBar uri="scanbar.png"/>
+    <footer>Première Inscription : 2019 / 2020</footer>
+  </Carte>
+  <Carte id="ZK123456">
+    <logoUae uri="logoUae.png"/>
+    <nameUae>Université Abdelmalek Essaâdi</nameUae>
+    <nameSchool>Ecole Nationale des Sciences Appliquées</nameSchool>
+    <villeSchool>Tanger</villeSchool>
+    <logoEnsa uri="ensat.png"/>
+    <title>CARTE D'ETUDIANT</title>
+    <Nom>MAFTOUHI</Nom>
+    <Prenom>Bilal</Prenom>
+    <codeApogee>ZK123456</codeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>bilal.maftouhi@gmail.com</Email>
+    <Image uri="images/"/>
+    <scanBar uri="scanbar.png"/>
+    <footer>Première Inscription : 2019 / 2020</footer>
+  </Carte>
+  <Carte id="R123456">
+    <logoUae uri="logoUae.png"/>
+    <nameUae>Université Abdelmalek Essaâdi</nameUae>
+    <nameSchool>Ecole Nationale des Sciences Appliquées</nameSchool>
+    <villeSchool>Tanger</villeSchool>
+    <logoEnsa uri="ensat.png"/>
+    <title>CARTE D'ETUDIANT</title>
+    <Nom>ZAOUI</Nom>
+    <Prenom>Oussama</Prenom>
+    <codeApogee>R123456</codeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>oussama.zaoui@gmail.com</Email>
+    <Image uri="images/"/>
+    <scanBar uri="scanbar.png"/>
+    <footer>Première Inscription : 2019 / 2020</footer>
+  </Carte>
+  <Carte id="F123555">
+    <logoUae uri="logoUae.png"/>
+    <nameUae>Université Abdelmalek Essaâdi</nameUae>
+    <nameSchool>Ecole Nationale des Sciences Appliquées</nameSchool>
+    <villeSchool>Tanger</villeSchool>
+    <logoEnsa uri="ensat.png"/>
+    <title>CARTE D'ETUDIANT</title>
+    <Nom>ALAMI</Nom>
+    <Prenom>Louay</Prenom>
+    <codeApogee>F123555</codeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>louay.alami@gmail.com</Email>
+    <Image uri="images/"/>
+    <scanBar uri="scanbar.png"/>
+    <footer>Première Inscription : 2019 / 2020</footer>
+  </Carte>
+  <Carte id="M123455">
+    <logoUae uri="logoUae.png"/>
+    <nameUae>Université Abdelmalek Essaâdi</nameUae>
+    <nameSchool>Ecole Nationale des Sciences Appliquées</nameSchool>
+    <villeSchool>Tanger</villeSchool>
+    <logoEnsa uri="ensat.png"/>
+    <title>CARTE D'ETUDIANT</title>
+    <Nom>HACHGUER</Nom>
+    <Prenom>Mohamed</Prenom>
+    <codeApogee>M123455</codeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>mohamed.hachguer@gmail.com</Email>
+    <Image uri="images/"/>
+    <scanBar uri="scanbar.png"/>
+    <footer>Première Inscription : 2019 / 2020</footer>
+  </Carte>
+  <Carte id="E1234455">
+    <logoUae uri="logoUae.png"/>
+    <nameUae>Université Abdelmalek Essaâdi</nameUae>
+    <nameSchool>Ecole Nationale des Sciences Appliquées</nameSchool>
+    <villeSchool>Tanger</villeSchool>
+    <logoEnsa uri="ensat.png"/>
+    <title>CARTE D'ETUDIANT</title>
+    <Nom>RACHED</Nom>
+    <Prenom>Wassim</Prenom>
+    <codeApogee>E1234455</codeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>wassim.rached@gmail.com</Email>
+    <Image uri="images/"/>
+    <scanBar uri="scanbar.png"/>
+    <footer>Première Inscription : 2019 / 2020</footer>
+  </Carte>
+  <Carte id="Y12345">
+    <logoUae uri="logoUae.png"/>
+    <nameUae>Université Abdelmalek Essaâdi</nameUae>
+    <nameSchool>Ecole Nationale des Sciences Appliquées</nameSchool>
+    <villeSchool>Tanger</villeSchool>
+    <logoEnsa uri="ensat.png"/>
+    <title>CARTE D'ETUDIANT</title>
+    <Nom>IDALIN</Nom>
+    <Prenom>Sohaib</Prenom>
+    <codeApogee>Y12345</codeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>sohaib.idalin@gmail.com</Email>
+    <Image uri="images/"/>
+    <scanBar uri="scanbar.png"/>
+    <footer>Première Inscription : 2019 / 2020</footer>
+  </Carte>
+  <Carte id="K987244">
+    <logoUae uri="logoUae.png"/>
+    <nameUae>Université Abdelmalek Essaâdi</nameUae>
+    <nameSchool>Ecole Nationale des Sciences Appliquées</nameSchool>
+    <villeSchool>Tanger</villeSchool>
+    <logoEnsa uri="ensat.png"/>
+    <title>CARTE D'ETUDIANT</title>
+    <Nom>BOUZIYANI</Nom>
+    <Prenom>Abir</Prenom>
+    <codeApogee>K987244</codeApogee>
+    <Filiere>GINF</Filiere>
+    <Niveau>GINF1</Niveau>
+    <Email>abir.bouzyani@gmail.com</Email>
+    <Image uri="images/"/>
+    <scanBar uri="scanbar.png"/>
+    <footer>Première Inscription : 2019 / 2020</footer>
+  </Carte>
+</Cartes>

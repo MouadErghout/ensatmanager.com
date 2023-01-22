@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('prenom');
             $table->string('niveau');
             $table->string('filiere_code')->references('code')->on('filieres')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreignId('filiere_id')->nullable()->constrained('filieres')->onUpdate('cascade')->onDelete('cascade');
             $table->foreignId('user_id')->constrained('users')->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });

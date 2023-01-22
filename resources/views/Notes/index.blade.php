@@ -1,3 +1,4 @@
+{{dd($Eleve,$Notes,$Moyenne,$Modules)}}
 <center>
     <h1>Liste des Notes</h1>
     <table border="3">

@@ -10,7 +10,11 @@
         "laravel/framework": "^9.19",
         "laravel/sanctum": "^3.0",
         "laravel/tinker": "^2.7",
-        "yajra/laravel-oci8": "^9.1"
+        "yajra/laravel-oci8": "^9.1",
+      "ext-dom": "*",
+      "ext-libxml": "*",
+      "ext-simplexml": "*",
+        "ext-xsl": "*"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -7,7 +7,10 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\MoyenneController;
 use App\Http\Controllers\NoteController;
+use App\Http\Controllers\ProfController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SeanceController;
+use App\Http\Controllers\XmlController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,7 +48,31 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('Moyenne',MoyenneController::class);
 
+        Route::resource('Prof',ProfController::class);
+
+        Route::resource('Seance',SeanceController::class);
+
+        Route::get('Emplois du temps/dashboard', function () {
+            return view('Emplois du temps.dashboard');
+        });
+
+        Route::get('Releves de notes/{Classe}',[XmlController::class,'XMLReleves']);
+
+        Route::get('Cartes des etudiants/{Classe}',[XmlController::class,'XMLCartes']);
+
+        Route::get('Emplois du temps/{Classe}',[XmlController::class,'XMLEmplois']);
+
     });
+    Route::get('Releve de note/{id}',[EleveController::class,'releve']);
+    Route::get('Carte etudiant/{id}',[EleveController::class,'carte']);
+    Route::get('Emploi du temps/{id}',[EleveController::class,'emploi']);
+    Route::get('Attestation de scolarite/{id}',[EleveController::class,'attestation']);
+
+    Route::post('store-image/{id}',[EleveController::class,'storeImage']);
 });
 
 require __DIR__.'/auth.php';
+//Test XML
+Route::get('/xmltest',[\App\Http\Controllers\XmlController::class,'index']);
+Route::get('/xmltestdisplay',[\App\Http\Controllers\XmlController::class,'display']);
+

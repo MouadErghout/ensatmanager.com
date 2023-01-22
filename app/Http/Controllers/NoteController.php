@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Eleve;
+use App\Models\Module;
 use App\Models\Note;
 use Illuminate\Http\Request;
 
@@ -42,11 +44,17 @@ class NoteController extends Controller
      * Display the specified resource.
      *
      * @param  \App\Models\Note  $note
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(Note $note)
+    public function show(int $id)
     {
-        //
+        $E = Eleve::find($id);
+        $Ms = Module::all()->where('niveau','=',$E->niveau);
+        return view('Notes.index',['Eleve'=>$E,
+            'Notes'=>$E->Note,
+            'Moyenne'=>$E->Moyenne,
+            'Modules'=>Module::all()->where('niveau','=',$E->niveau)
+        ]);
     }
 
     /**

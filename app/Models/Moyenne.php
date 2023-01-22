@@ -10,4 +10,9 @@ class Moyenne extends Model
     public $incrementing = false;
 
     use HasFactory;
+
+    public function Eleve()
+    {
+        return $this->belongsTo(Eleve::class);
+    }
 }

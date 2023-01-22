@@ -1,0 +1,815 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE Eleves SYSTEM "RELEVES.dtd">
+<Eleves niveau="AP2">
+  <Eleve id="A124563" nom="Chanaa" prenom="Ayamn">
+    <Module id="AP31" designation="Algébre 3">
+      <Element_module id="AP311" designation="Algèbre 3">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP32" designation="Analyse 3">
+      <Element_module id="AP321" designation="Analyse 3">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP33" designation="Mécanique 2">
+      <Element_module id="AP331" designation="Mécanique industrielle">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP34" designation="Physique 4">
+      <Element_module id="AP341" designation="Electromagnétisme">
+        <Note>12</Note>
+      </Element_module>
+      <Note>12</Note>
+    </Module>
+    <Module id="AP35" designation="Info2">
+      <Element_module id="AP351" designation="Algorithmique">
+        <Note>15</Note>
+      </Element_module>
+      <Element_module id="AP352" designation="Complexité">
+        <Note>8</Note>
+      </Element_module>
+      <Note>11.5</Note>
+    </Module>
+    <Module id="AP16" designation="LC3">
+      <Element_module id="AP161" designation="Technique d'expression de communication 1">
+        <Note>7</Note>
+      </Element_module>
+      <Note>7</Note>
+    </Module>
+    <Module id="AP41" designation="Analyse 4">
+      <Element_module id="AP411" designation="Algèbre 4">
+        <Note>9</Note>
+      </Element_module>
+      <Note>9</Note>
+    </Module>
+    <Module id="AP42" designation="Maths Appliquées">
+      <Element_module id="AP421" designation="Maths Appliquées">
+        <Note>20</Note>
+      </Element_module>
+      <Element_module id="AP422" designation="Analyse Numérique">
+        <Note>12</Note>
+      </Element_module>
+      <Note>16</Note>
+    </Module>
+    <Module id="AP43" designation="Physique 5">
+      <Element_module id="AP431" designation="Electronique">
+        <Note>4</Note>
+      </Element_module>
+      <Element_module id="AP432" designation="Instrumentation 2">
+        <Note>12</Note>
+      </Element_module>
+      <Note>8</Note>
+    </Module>
+    <Module id="AP24" designation="Physique 3">
+      <Element_module id="AP241" designation="Thermodynamique">
+        <Note>15</Note>
+      </Element_module>
+      <Element_module id="AP242" designation="Instrumantation 3">
+        <Note>10</Note>
+      </Element_module>
+      <Note>12.5</Note>
+    </Module>
+    <Module id="AP25" designation="Info 3">
+      <Element_module id="AP251" designation="Programmation en C">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP26" designation="LC2">
+      <Element_module id="AP261" designation="Technique d'expression de communication 2">
+        <Note>10</Note>
+      </Element_module>
+      <Element_module id="AP262" designation="Anglais 2">
+        <Note>9</Note>
+      </Element_module>
+      <Note>9.5</Note>
+    </Module>
+    <Moyenne>10.45</Moyenne>
+  </Eleve>
+  <Eleve id="S654891" nom="Dimarco" prenom="Hicham">
+    <Module id="AP31" designation="Algébre 3">
+      <Element_module id="AP311" designation="Algèbre 3">
+        <Note>8</Note>
+      </Element_module>
+      <Note>8</Note>
+    </Module>
+    <Module id="AP32" designation="Analyse 3">
+      <Element_module id="AP321" designation="Analyse 3">
+        <Note>7</Note>
+      </Element_module>
+      <Note>7</Note>
+    </Module>
+    <Module id="AP33" designation="Mécanique 2">
+      <Element_module id="AP331" designation="Mécanique industrielle">
+        <Note>6</Note>
+      </Element_module>
+      <Note>6</Note>
+    </Module>
+    <Module id="AP34" designation="Physique 4">
+      <Element_module id="AP341" designation="Electromagnétisme">
+        <Note>5</Note>
+      </Element_module>
+      <Note>5</Note>
+    </Module>
+    <Module id="AP35" designation="Info2">
+      <Element_module id="AP351" designation="Algorithmique">
+        <Note>10</Note>
+      </Element_module>
+      <Element_module id="AP352" designation="Complexité">
+        <Note>18</Note>
+      </Element_module>
+      <Note>14</Note>
+    </Module>
+    <Module id="AP16" designation="LC3">
+      <Element_module id="AP161" designation="Technique d'expression de communication 1">
+        <Note>20</Note>
+      </Element_module>
+      <Note>20</Note>
+    </Module>
+    <Module id="AP41" designation="Analyse 4">
+      <Element_module id="AP411" designation="Algèbre 4">
+        <Note>13</Note>
+      </Element_module>
+      <Note>13</Note>
+    </Module>
+    <Module id="AP42" designation="Maths Appliquées">
+      <Element_module id="AP421" designation="Maths Appliquées">
+        <Note>15</Note>
+      </Element_module>
+      <Element_module id="AP422" designation="Analyse Numérique">
+        <Note>16</Note>
+      </Element_module>
+      <Note>15.5</Note>
+    </Module>
+    <Module id="AP43" designation="Physique 5">
+      <Element_module id="AP431" designation="Electronique">
+        <Note>14</Note>
+      </Element_module>
+      <Element_module id="AP432" designation="Instrumentation 2">
+        <Note>17</Note>
+      </Element_module>
+      <Note>15.5</Note>
+    </Module>
+    <Module id="AP24" designation="Physique 3">
+      <Element_module id="AP241" designation="Thermodynamique">
+        <Note>14</Note>
+      </Element_module>
+      <Element_module id="AP242" designation="Instrumantation 3">
+        <Note>14</Note>
+      </Element_module>
+      <Note>14</Note>
+    </Module>
+    <Module id="AP25" designation="Info 3">
+      <Element_module id="AP251" designation="Programmation en C">
+        <Note>12</Note>
+      </Element_module>
+      <Note>12</Note>
+    </Module>
+    <Module id="AP26" designation="LC2">
+      <Element_module id="AP261" designation="Technique d'expression de communication 2">
+        <Note>12</Note>
+      </Element_module>
+      <Element_module id="AP262" designation="Anglais 2">
+        <Note>12</Note>
+      </Element_module>
+      <Note>12</Note>
+    </Module>
+    <Moyenne>11.833</Moyenne>
+  </Eleve>
+  <Eleve id="F125480" nom="Bourqadi" prenom="Oussama">
+    <Module id="AP31" designation="Algébre 3">
+      <Element_module id="AP311" designation="Algèbre 3">
+        <Note>12</Note>
+      </Element_module>
+      <Note>12</Note>
+    </Module>
+    <Module id="AP32" designation="Analyse 3">
+      <Element_module id="AP321" designation="Analyse 3">
+        <Note>12</Note>
+      </Element_module>
+      <Note>12</Note>
+    </Module>
+    <Module id="AP33" designation="Mécanique 2">
+      <Element_module id="AP331" designation="Mécanique industrielle">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP34" designation="Physique 4">
+      <Element_module id="AP341" designation="Electromagnétisme">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP35" designation="Info2">
+      <Element_module id="AP351" designation="Algorithmique">
+        <Note>10</Note>
+      </Element_module>
+      <Element_module id="AP352" designation="Complexité">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP16" designation="LC3">
+      <Element_module id="AP161" designation="Technique d'expression de communication 1">
+        <Note>14</Note>
+      </Element_module>
+      <Note>14</Note>
+    </Module>
+    <Module id="AP41" designation="Analyse 4">
+      <Element_module id="AP411" designation="Algèbre 4">
+        <Note>16</Note>
+      </Element_module>
+      <Note>16</Note>
+    </Module>
+    <Module id="AP42" designation="Maths Appliquées">
+      <Element_module id="AP421" designation="Maths Appliquées">
+        <Note>16</Note>
+      </Element_module>
+      <Element_module id="AP422" designation="Analyse Numérique">
+        <Note>16</Note>
+      </Element_module>
+      <Note>16</Note>
+    </Module>
+    <Module id="AP43" designation="Physique 5">
+      <Element_module id="AP431" designation="Electronique">
+        <Note>15</Note>
+      </Element_module>
+      <Element_module id="AP432" designation="Instrumentation 2">
+        <Note>14</Note>
+      </Element_module>
+      <Note>14.5</Note>
+    </Module>
+    <Module id="AP24" designation="Physique 3">
+      <Element_module id="AP241" designation="Thermodynamique">
+        <Note>14</Note>
+      </Element_module>
+      <Element_module id="AP242" designation="Instrumantation 3">
+        <Note>8</Note>
+      </Element_module>
+      <Note>11</Note>
+    </Module>
+    <Module id="AP25" designation="Info 3">
+      <Element_module id="AP251" designation="Programmation en C">
+        <Note>8</Note>
+      </Element_module>
+      <Note>8</Note>
+    </Module>
+    <Module id="AP26" designation="LC2">
+      <Element_module id="AP261" designation="Technique d'expression de communication 2">
+        <Note>9</Note>
+      </Element_module>
+      <Element_module id="AP262" designation="Anglais 2">
+        <Note>8</Note>
+      </Element_module>
+      <Note>8.5</Note>
+    </Module>
+    <Moyenne>11.833</Moyenne>
+  </Eleve>
+  <Eleve id="R486497" nom="BOULOUQAT" prenom="Jawad">
+    <Module id="AP31" designation="Algébre 3">
+      <Element_module id="AP311" designation="Algèbre 3">
+        <Note>6</Note>
+      </Element_module>
+      <Note>6</Note>
+    </Module>
+    <Module id="AP32" designation="Analyse 3">
+      <Element_module id="AP321" designation="Analyse 3">
+        <Note>6</Note>
+      </Element_module>
+      <Note>6</Note>
+    </Module>
+    <Module id="AP33" designation="Mécanique 2">
+      <Element_module id="AP331" designation="Mécanique industrielle">
+        <Note>6</Note>
+      </Element_module>
+      <Note>6</Note>
+    </Module>
+    <Module id="AP34" designation="Physique 4">
+      <Element_module id="AP341" designation="Electromagnétisme">
+        <Note>7</Note>
+      </Element_module>
+      <Note>7</Note>
+    </Module>
+    <Module id="AP35" designation="Info2">
+      <Element_module id="AP351" designation="Algorithmique">
+        <Note>7</Note>
+      </Element_module>
+      <Element_module id="AP352" designation="Complexité">
+        <Note>7</Note>
+      </Element_module>
+      <Note>7</Note>
+    </Module>
+    <Module id="AP16" designation="LC3">
+      <Element_module id="AP161" designation="Technique d'expression de communication 1">
+        <Note>7</Note>
+      </Element_module>
+      <Note>7</Note>
+    </Module>
+    <Module id="AP41" designation="Analyse 4">
+      <Element_module id="AP411" designation="Algèbre 4">
+        <Note>8</Note>
+      </Element_module>
+      <Note>8</Note>
+    </Module>
+    <Module id="AP42" designation="Maths Appliquées">
+      <Element_module id="AP421" designation="Maths Appliquées">
+        <Note>14</Note>
+      </Element_module>
+      <Element_module id="AP422" designation="Analyse Numérique">
+        <Note>14</Note>
+      </Element_module>
+      <Note>14</Note>
+    </Module>
+    <Module id="AP43" designation="Physique 5">
+      <Element_module id="AP431" designation="Electronique">
+        <Note>15</Note>
+      </Element_module>
+      <Element_module id="AP432" designation="Instrumentation 2">
+        <Note>15</Note>
+      </Element_module>
+      <Note>15</Note>
+    </Module>
+    <Module id="AP24" designation="Physique 3">
+      <Element_module id="AP241" designation="Thermodynamique">
+        <Note>15</Note>
+      </Element_module>
+      <Element_module id="AP242" designation="Instrumantation 3">
+        <Note>17</Note>
+      </Element_module>
+      <Note>16</Note>
+    </Module>
+    <Module id="AP25" designation="Info 3">
+      <Element_module id="AP251" designation="Programmation en C">
+        <Note>17</Note>
+      </Element_module>
+      <Note>17</Note>
+    </Module>
+    <Module id="AP26" designation="LC2">
+      <Element_module id="AP261" designation="Technique d'expression de communication 2">
+        <Note>10</Note>
+      </Element_module>
+      <Element_module id="AP262" designation="Anglais 2">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Moyenne>9.916</Moyenne>
+  </Eleve>
+  <Eleve id="V154896" nom="Boudan" prenom="Ahmed">
+    <Module id="AP31" designation="Algébre 3">
+      <Element_module id="AP311" designation="Algèbre 3">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP32" designation="Analyse 3">
+      <Element_module id="AP321" designation="Analyse 3">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP33" designation="Mécanique 2">
+      <Element_module id="AP331" designation="Mécanique industrielle">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP34" designation="Physique 4">
+      <Element_module id="AP341" designation="Electromagnétisme">
+        <Note>19</Note>
+      </Element_module>
+      <Note>19</Note>
+    </Module>
+    <Module id="AP35" designation="Info2">
+      <Element_module id="AP351" designation="Algorithmique">
+        <Note>19</Note>
+      </Element_module>
+      <Element_module id="AP352" designation="Complexité">
+        <Note>19</Note>
+      </Element_module>
+      <Note>19</Note>
+    </Module>
+    <Module id="AP16" designation="LC3">
+      <Element_module id="AP161" designation="Technique d'expression de communication 1">
+        <Note>19</Note>
+      </Element_module>
+      <Note>19</Note>
+    </Module>
+    <Module id="AP41" designation="Analyse 4">
+      <Element_module id="AP411" designation="Algèbre 4">
+        <Note>5</Note>
+      </Element_module>
+      <Note>5</Note>
+    </Module>
+    <Module id="AP42" designation="Maths Appliquées">
+      <Element_module id="AP421" designation="Maths Appliquées">
+        <Note>8</Note>
+      </Element_module>
+      <Element_module id="AP422" designation="Analyse Numérique">
+        <Note>17</Note>
+      </Element_module>
+      <Note>12.5</Note>
+    </Module>
+    <Module id="AP43" designation="Physique 5">
+      <Element_module id="AP431" designation="Electronique">
+        <Note>14</Note>
+      </Element_module>
+      <Element_module id="AP432" designation="Instrumentation 2">
+        <Note>12</Note>
+      </Element_module>
+      <Note>13</Note>
+    </Module>
+    <Module id="AP24" designation="Physique 3">
+      <Element_module id="AP241" designation="Thermodynamique">
+        <Note>13</Note>
+      </Element_module>
+      <Element_module id="AP242" designation="Instrumantation 3">
+        <Note>16</Note>
+      </Element_module>
+      <Note>14.5</Note>
+    </Module>
+    <Module id="AP25" designation="Info 3">
+      <Element_module id="AP251" designation="Programmation en C">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP26" designation="LC2">
+      <Element_module id="AP261" designation="Technique d'expression de communication 2">
+        <Note>20</Note>
+      </Element_module>
+      <Element_module id="AP262" designation="Anglais 2">
+        <Note>15</Note>
+      </Element_module>
+      <Note>17.5</Note>
+    </Module>
+    <Moyenne>13.291</Moyenne>
+  </Eleve>
+  <Eleve id="D12649" nom="Najari" prenom="Fadil">
+    <Module id="AP31" designation="Algébre 3">
+      <Element_module id="AP311" designation="Algèbre 3">
+        <Note>14</Note>
+      </Element_module>
+      <Note>14</Note>
+    </Module>
+    <Module id="AP32" designation="Analyse 3">
+      <Element_module id="AP321" designation="Analyse 3">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP33" designation="Mécanique 2">
+      <Element_module id="AP331" designation="Mécanique industrielle">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP34" designation="Physique 4">
+      <Element_module id="AP341" designation="Electromagnétisme">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP35" designation="Info2">
+      <Element_module id="AP351" designation="Algorithmique">
+        <Note>12</Note>
+      </Element_module>
+      <Element_module id="AP352" designation="Complexité">
+        <Note>17</Note>
+      </Element_module>
+      <Note>14.5</Note>
+    </Module>
+    <Module id="AP16" designation="LC3">
+      <Element_module id="AP161" designation="Technique d'expression de communication 1">
+        <Note>20</Note>
+      </Element_module>
+      <Note>20</Note>
+    </Module>
+    <Module id="AP41" designation="Analyse 4">
+      <Element_module id="AP411" designation="Algèbre 4">
+        <Note>19</Note>
+      </Element_module>
+      <Note>19</Note>
+    </Module>
+    <Module id="AP42" designation="Maths Appliquées">
+      <Element_module id="AP421" designation="Maths Appliquées">
+        <Note>18</Note>
+      </Element_module>
+      <Element_module id="AP422" designation="Analyse Numérique">
+        <Note>12</Note>
+      </Element_module>
+      <Note>15</Note>
+    </Module>
+    <Module id="AP43" designation="Physique 5">
+      <Element_module id="AP431" designation="Electronique">
+        <Note>15</Note>
+      </Element_module>
+      <Element_module id="AP432" designation="Instrumentation 2">
+        <Note>7</Note>
+      </Element_module>
+      <Note>11</Note>
+    </Module>
+    <Module id="AP24" designation="Physique 3">
+      <Element_module id="AP241" designation="Thermodynamique">
+        <Note>8</Note>
+      </Element_module>
+      <Element_module id="AP242" designation="Instrumantation 3">
+        <Note>6</Note>
+      </Element_module>
+      <Note>7</Note>
+    </Module>
+    <Module id="AP25" designation="Info 3">
+      <Element_module id="AP251" designation="Programmation en C">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP26" designation="LC2">
+      <Element_module id="AP261" designation="Technique d'expression de communication 2">
+        <Note>10</Note>
+      </Element_module>
+      <Element_module id="AP262" designation="Anglais 2">
+        <Note>13</Note>
+      </Element_module>
+      <Note>11.5</Note>
+    </Module>
+    <Moyenne>12.66</Moyenne>
+  </Eleve>
+  <Eleve id="X845793" nom="Aznagui" prenom="Mohamed">
+    <Module id="AP31" designation="Algébre 3">
+      <Element_module id="AP311" designation="Algèbre 3">
+        <Note>12</Note>
+      </Element_module>
+      <Note>12</Note>
+    </Module>
+    <Module id="AP32" designation="Analyse 3">
+      <Element_module id="AP321" designation="Analyse 3">
+        <Note>15</Note>
+      </Element_module>
+      <Note>15</Note>
+    </Module>
+    <Module id="AP33" designation="Mécanique 2">
+      <Element_module id="AP331" designation="Mécanique industrielle">
+        <Note>14</Note>
+      </Element_module>
+      <Note>14</Note>
+    </Module>
+    <Module id="AP34" designation="Physique 4">
+      <Element_module id="AP341" designation="Electromagnétisme">
+        <Note>16</Note>
+      </Element_module>
+      <Note>16</Note>
+    </Module>
+    <Module id="AP35" designation="Info2">
+      <Element_module id="AP351" designation="Algorithmique">
+        <Note>20</Note>
+      </Element_module>
+      <Element_module id="AP352" designation="Complexité">
+        <Note>17</Note>
+      </Element_module>
+      <Note>18.5</Note>
+    </Module>
+    <Module id="AP16" designation="LC3">
+      <Element_module id="AP161" designation="Technique d'expression de communication 1">
+        <Note>5</Note>
+      </Element_module>
+      <Note>5</Note>
+    </Module>
+    <Module id="AP41" designation="Analyse 4">
+      <Element_module id="AP411" designation="Algèbre 4">
+        <Note>6</Note>
+      </Element_module>
+      <Note>6</Note>
+    </Module>
+    <Module id="AP42" designation="Maths Appliquées">
+      <Element_module id="AP421" designation="Maths Appliquées">
+        <Note>7</Note>
+      </Element_module>
+      <Element_module id="AP422" designation="Analyse Numérique">
+        <Note>9</Note>
+      </Element_module>
+      <Note>8</Note>
+    </Module>
+    <Module id="AP43" designation="Physique 5">
+      <Element_module id="AP431" designation="Electronique">
+        <Note>10</Note>
+      </Element_module>
+      <Element_module id="AP432" designation="Instrumentation 2">
+        <Note>10</Note>
+      </Element_module>
+      <Note>10</Note>
+    </Module>
+    <Module id="AP24" designation="Physique 3">
+      <Element_module id="AP241" designation="Thermodynamique">
+        <Note>14</Note>
+      </Element_module>
+      <Element_module id="AP242" designation="Instrumantation 3">
+        <Note>15</Note>
+      </Element_module>
+      <Note>14.5</Note>
+    </Module>
+    <Module id="AP25" designation="Info 3">
+      <Element_module id="AP251" designation="Programmation en C">
+        <Note>1</Note>
+      </Element_module>
+      <Note>1</Note>
+    </Module>
+    <Module id="AP26" designation="LC2">
+      <Element_module id="AP261" designation="Technique d'expression de communication 2">
+        <Note>12</Note>
+      </Element_module>
+      <Element_module id="AP262" designation="Anglais 2">
+        <Note>13</Note>
+      </Element_module>
+      <Note>12.5</Note>
+    </Module>
+    <Moyenne>11.0416</Moyenne>
+  </Eleve>
+  <Eleve id="J458293" nom="Aouad" prenom="Sami">
+    <Module id="AP31" designation="Algébre 3">
+      <Element_module id="AP311" designation="Algèbre 3">
+        <Note>16</Note>
+      </Element_module>
+      <Note>16</Note>
+    </Module>
+    <Module id="AP32" designation="Analyse 3">
+      <Element_module id="AP321" designation="Analyse 3">
+        <Note>11</Note>
+      </Element_module>
+      <Note>11</Note>
+    </Module>
+    <Module id="AP33" designation="Mécanique 2">
+      <Element_module id="AP331" designation="Mécanique industrielle">
+        <Note>11</Note>
+      </Element_module>
+      <Note>11</Note>
+    </Module>
+    <Module id="AP34" designation="Physique 4">
+      <Element_module id="AP341" designation="Electromagnétisme">
+        <Note>11</Note>
+      </Element_module>
+      <Note>11</Note>
+    </Module>
+    <Module id="AP35" designation="Info2">
+      <Element_module id="AP351" designation="Algorithmique">
+        <Note>12</Note>
+      </Element_module>
+      <Element_module id="AP352" designation="Complexité">
+        <Note>14</Note>
+      </Element_module>
+      <Note>13</Note>
+    </Module>
+    <Module id="AP16" designation="LC3">
+      <Element_module id="AP161" designation="Technique d'expression de communication 1">
+        <Note>18</Note>
+      </Element_module>
+      <Note>18</Note>
+    </Module>
+    <Module id="AP41" designation="Analyse 4">
+      <Element_module id="AP411" designation="Algèbre 4">
+        <Note>19</Note>
+      </Element_module>
+      <Note>19</Note>
+    </Module>
+    <Module id="AP42" designation="Maths Appliquées">
+      <Element_module id="AP421" designation="Maths Appliquées">
+        <Note>17</Note>
+      </Element_module>
+      <Element_module id="AP422" designation="Analyse Numérique">
+        <Note>19</Note>
+      </Element_module>
+      <Note>18</Note>
+    </Module>
+    <Module id="AP43" designation="Physique 5">
+      <Element_module id="AP431" designation="Electronique">
+        <Note>16</Note>
+      </Element_module>
+      <Element_module id="AP432" designation="Instrumentation 2">
+        <Note>10</Note>
+      </Element_module>
+      <Note>13</Note>
+    </Module>
+    <Module id="AP24" designation="Physique 3">
+      <Element_module id="AP241" designation="Thermodynamique">
+        <Note>7</Note>
+      </Element_module>
+      <Element_module id="AP242" designation="Instrumantation 3">
+        <Note>8</Note>
+      </Element_module>
+      <Note>7.5</Note>
+    </Module>
+    <Module id="AP25" designation="Info 3">
+      <Element_module id="AP251" designation="Programmation en C">
+        <Note>9</Note>
+      </Element_module>
+      <Note>9</Note>
+    </Module>
+    <Module id="AP26" designation="LC2">
+      <Element_module id="AP261" designation="Technique d'expression de communication 2">
+        <Note>12</Note>
+      </Element_module>
+      <Element_module id="AP262" designation="Anglais 2">
+        <Note>14</Note>
+      </Element_module>
+      <Note>13</Note>
+    </Module>
+    <Moyenne>13.291</Moyenne>
+  </Eleve>
+  <Eleve id="KL156497" nom="Chitouh" prenom="Zakaria">
+    <Module id="AP31" designation="Algébre 3">
+      <Element_module id="AP311" designation="Algèbre 3">
+        <Note>20</Note>
+      </Element_module>
+      <Note>20</Note>
+    </Module>
+    <Module id="AP32" designation="Analyse 3">
+      <Element_module id="AP321" designation="Analyse 3">
+        <Note>12</Note>
+      </Element_module>
+      <Note>12</Note>
+    </Module>
+    <Module id="AP33" designation="Mécanique 2">
+      <Element_module id="AP331" designation="Mécanique industrielle">
+        <Note>11</Note>
+      </Element_module>
+      <Note>11</Note>
+    </Module>
+    <Module id="AP34" designation="Physique 4">
+      <Element_module id="AP341" designation="Electromagnétisme">
+        <Note>7</Note>
+      </Element_module>
+      <Note>7</Note>
+    </Module>
+    <Module id="AP35" designation="Info2">
+      <Element_module id="AP351" designation="Algorithmique">
+        <Note>8</Note>
+      </Element_module>
+      <Element_module id="AP352" designation="Complexité">
+        <Note>5</Note>
+      </Element_module>
+      <Note>6.5</Note>
+    </Module>
+    <Module id="AP16" designation="LC3">
+      <Element_module id="AP161" designation="Technique d'expression de communication 1">
+        <Note>14</Note>
+      </Element_module>
+      <Note>14</Note>
+    </Module>
+    <Module id="AP41" designation="Analyse 4">
+      <Element_module id="AP411" designation="Algèbre 4">
+        <Note>19</Note>
+      </Element_module>
+      <Note>19</Note>
+    </Module>
+    <Module id="AP42" designation="Maths Appliquées">
+      <Element_module id="AP421" designation="Maths Appliquées">
+        <Note>13</Note>
+      </Element_module>
+      <Element_module id="AP422" designation="Analyse Numérique">
+        <Note>10</Note>
+      </Element_module>
+      <Note>11.5</Note>
+    </Module>
+    <Module id="AP43" designation="Physique 5">
+      <Element_module id="AP431" designation="Electronique">
+        <Note>14</Note>
+      </Element_module>
+      <Element_module id="AP432" designation="Instrumentation 2">
+        <Note>17</Note>
+      </Element_module>
+      <Note>15.5</Note>
+    </Module>
+    <Module id="AP24" designation="Physique 3">
+      <Element_module id="AP241" designation="Thermodynamique">
+        <Note>8</Note>
+      </Element_module>
+      <Element_module id="AP242" designation="Instrumantation 3">
+        <Note>6</Note>
+      </Element_module>
+      <Note>7</Note>
+    </Module>
+    <Module id="AP25" designation="Info 3">
+      <Element_module id="AP251" designation="Programmation en C">
+        <Note>7.5</Note>
+      </Element_module>
+      <Note>7.5</Note>
+    </Module>
+    <Module id="AP26" designation="LC2">
+      <Element_module id="AP261" designation="Technique d'expression de communication 2">
+        <Note>12.4</Note>
+      </Element_module>
+      <Element_module id="AP262" designation="Anglais 2">
+        <Note>11</Note>
+      </Element_module>
+      <Note>11.7</Note>
+    </Module>
+    <Moyenne>11.891</Moyenne>
+  </Eleve>
+  <Moyenne_generale>11.802777777778</Moyenne_generale>
+</Eleves>

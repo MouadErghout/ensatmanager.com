@@ -32,7 +32,7 @@ class Eleve extends Model
 
     public function Filiere()
     {
-        return $this->belongsTo(Filiere::class);
+        return $this->belongsTo(Filiere::class,'filiere_code');
     }
 
 }

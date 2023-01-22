@@ -75,12 +75,13 @@ class EleveController extends Controller
      * @param  \App\Models\Eleve  $eleve
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
-    public function show(Eleve $Eleve)
+
+    public function show(int $id)
     {
-        return view('Eleves.show',['Eleve'=>$Eleve,
-            'User'=>User::find($Eleve->user_id),
-            'Notes'=>$Eleve->Note(),
-            'Moyenne'=>$Eleve->Moyenne()]);
+        $E = Eleve::find($id);
+        return view('Eleves.show',['Eleve'=>$E,
+            'User'=>$E->User,
+        ]);
     }
 
     /**
@@ -115,5 +116,67 @@ class EleveController extends Controller
     public function destroy(Eleve $eleve)
     {
         //
+    }
+
+    public function  releve($id)
+    {
+        $E=Eleve::find($id);
+        $path = public_path('Releves de notes/' .$E->code.'.pdf');
+        // header
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $E->code.'.pdf' . '"'
+        ];
+        return response()->file($path, $header);
+    }
+
+    public function  carte($id)
+    {
+        $E=Eleve::find($id);
+        $path = public_path('Cartes des etudiants/' .$E->code.'.pdf');
+        // header
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $E->code.'.pdf' . '"'
+        ];
+        return response()->file($path, $header);
+    }
+
+    public function storeImage(Request $request,$id)
+    {
+        $E=Eleve::find($id);
+
+        if($request->file('image')){
+            $file= $request->file('image');
+            $filename= $file->getClientOriginalName();
+            $file-> move(public_path('Cartes des etudiants/images'), $filename);
+            $E->photo= $filename;
+        }
+        $E->save();
+        return Redirect('/dashboard');
+    }
+
+    public function  emploi($id)
+    {
+        $E=Eleve::find($id);
+        $path = public_path('Emplois du temps/' .$E->niveau.'.pdf');
+        // header
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $E->code.'.pdf' . '"'
+        ];
+        return response()->file($path, $header);
+    }
+
+    public function  attestation($id)
+    {
+        $E=Eleve::find($id);
+        $path = public_path('Attestations de scolarite/' .$E->code.'.pdf');
+        // header
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $E->code.'.pdf' . '"'
+        ];
+        return response()->file($path, $header);
     }
 }
