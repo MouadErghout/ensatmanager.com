@@ -156,15 +156,22 @@ class EleveController extends Controller
         return Redirect('/dashboard');
     }
 
-    public function viewImage()
-    {
-
-    }
-
     public function  emploi($id)
     {
         $E=Eleve::find($id);
         $path = public_path('Emplois du temps/' .$E->niveau.'.pdf');
+        // header
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $E->code.'.pdf' . '"'
+        ];
+        return response()->file($path, $header);
+    }
+
+    public function  attestation($id)
+    {
+        $E=Eleve::find($id);
+        $path = public_path('Attestations de scolarite/' .$E->code.'.pdf');
         // header
         $header = [
             'Content-Type' => 'application/pdf',

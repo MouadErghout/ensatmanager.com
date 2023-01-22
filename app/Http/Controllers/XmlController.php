@@ -276,18 +276,6 @@ class XmlController extends Controller
                     <a href='/dashboard'>Revenir au dashboard</a><br></center>";
     }
 
-    public function IsValidDTD($filePath)
-    {
-        $xml = new DOMDocument;
-        if($xml->load($filePath)){
-            if(!$xml->validate()){
-                File::delete($filePath);
-                return false;
-            }
-            return true;
-        }
-        return false;
-    }
 
     public function IsValidSchema($xmlPath,$xsdPath)
     {

@@ -2,6 +2,7 @@
 <h2>GINF1</h2><br>
 <a href="/Releves de notes/GINF1">Mettre à jour les releves de notes de la classe <strong>GINF1</strong></a><br>
 <a href="/Cartes des etudiants/GINF1">Mettre à jour les cartes des etudiants de la classe <strong>GINF1</strong></a><br>
+<a href="/Attestations de scolarite/GINF1">Mettre à jour les attestations de scolarite de la classe <strong>GINF1</strong></a><br>
 <h2>AP2</h2><br>
 <a href="/Releves de notes/AP2">Mettre à jour les releves de notes de la classe <strong>AP2</strong></a><br>
 <a href="/Cartes des etudiants/AP2">Mettre à jour les cartes des etudiants de la classe <strong>AP2</strong></a><br>
