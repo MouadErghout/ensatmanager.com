@@ -9,7 +9,8 @@
     </x-dropdown-link>
 </form>
 <a href="/Releve de note/{{$Eleve->id}}">Note et Resultas</a><br><br>
-<a href="/Carte etudiant/{{$Eleve->id}}">Carte d'etudiant</a>
+<a href="/Carte etudiant/{{$Eleve->id}}">Carte d'etudiant</a><br><br>
+<a href="/Emploi du temps/{{$Eleve->id}}">Emploi du temps</a>
 <center>
     @if($Eleve->photo)
         <div class="container">

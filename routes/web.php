@@ -65,6 +65,7 @@ Route::middleware('auth')->group(function () {
     });
     Route::get('Releve de note/{id}',[EleveController::class,'releve']);
     Route::get('Carte etudiant/{id}',[EleveController::class,'carte']);
+    Route::get('Emploi du temps/{id}',[EleveController::class,'emploi']);
 
     Route::post('store-image/{id}',[EleveController::class,'storeImage']);
 });

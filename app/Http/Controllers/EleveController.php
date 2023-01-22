@@ -160,4 +160,16 @@ class EleveController extends Controller
     {
 
     }
+
+    public function  emploi($id)
+    {
+        $E=Eleve::find($id);
+        $path = public_path('Emplois du temps/' .$E->niveau.'.pdf');
+        // header
+        $header = [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . $E->code.'.pdf' . '"'
+        ];
+        return response()->file($path, $header);
+    }
 }
