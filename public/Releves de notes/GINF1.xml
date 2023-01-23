@@ -257,7 +257,7 @@
       </Element_module>
       <Note>12</Note>
     </Module>
-    <Moyenne>12.041</Moyenne>
+    <Moyenne>12.041666666667</Moyenne>
   </Eleve>
   <Eleve id="ZK123456" nom="MAFTOUHI" prenom="Bilal">
     <Module id="GINF11" designation="Maths pour l'ingénieur">
