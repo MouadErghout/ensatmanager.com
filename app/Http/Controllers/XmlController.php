@@ -27,18 +27,11 @@ class XmlController extends Controller
         $dom->formatOutput = true;
         $implement  = new DOMImplementation();
         $dom->appendChild($implement->createDocumentType('Eleves SYSTEM "RELEVES.dtd"'));
-
         $xml_file_name = 'Releves de notes/'.$Classe.'.xml';
-
         $Eleves = $dom->createElement('Eleves');
         $niveau = new DOMAttr('niveau',"$Classe");
-        /*$xmlns = new DOMAttr('xmlns',"https://www.w3schools.com");
-        $xmlns_xsi = new DOMAttr('xmlns:xsi',"http://www.w3.org/2001/XMLSchema-instance");
-        $xsi_schemaLocation = new DOMAttr('xsi:schemaLocation',"https://www.w3schools.com/xml RELEVES.xsd");*/
         $Eleves->setAttributeNode($niveau);
-        /*$Eleves->setAttributeNode($xmlns);
-        $Eleves->setAttributeNode($xmlns_xsi);
-        $Eleves->setAttributeNode($xsi_schemaLocation);*/
+
         $eleves = Eleve::all()->where('niveau','=',$Classe);
         $Moyenne_classe = 0;
         foreach ($eleves as $eleve)
@@ -66,7 +59,8 @@ class XmlController extends Controller
                     $designation = new DOMAttr('designation', $ElementModule->designation);
                     $elementmodule->setAttributeNode($code);
                     $elementmodule->setAttributeNode($designation);
-                    $noteElemod = (DB::select("select note from notes where elementmodule_code='".$ElementModule->code."' and eleve_id=".$eleve->id))[0]->note;
+                    $noteElemod = (DB::select("select note from notes where elementmodule_code='' ||
+                                        '".$ElementModule->code."' and eleve_id=".$eleve->id))[0]->note;
                     $note = $dom->createElement('Note', $noteElemod);
                     $elementmodule->appendChild($note);
                     $module->appendChild($elementmodule);
@@ -97,47 +91,6 @@ class XmlController extends Controller
             echo "<h1>Schema valid</h1><br>
                     <h2>Les releves de notes ont bien été mises à jour</h2><br>
                     <a href='/dashboard'>Revenir au dashboard</a><br></center>";
-    }
-
-    public function XMLReleve($id)
-    {
-        $xq = xq_new();
-        xq_load_file($xq, '/path/to/query.xq');
-        $result = xq_execute($xq);
-
-        $xml = xq_get_result($result);
-
-        $fp = fopen('/path/to/output.xml', 'w');
-        fwrite($fp, $xml);
-        fclose($fp);
-
-        $dom = new DOMDocument();
-        $dom->encoding = 'UTF-8';
-        $dom->xmlVersion = '1.0';
-        $dom->xmlStandalone = false;
-        $dom->formatOutput = true;
-        $implement  = new DOMImplementation();
-        $dom->appendChild($implement->createDocumentType('Eleves SYSTEM "RELEVE.dtd"'));
-
-        $Eleve=Eleve::find($id);
-        $xml_file_name = 'Releves de notes/'.$Eleve->niveau.'.xml';
-        //$niveau = new DOMAttr('niveau',$Eleve->niveau);
-
-        $doc = new DOMDocument;
-
-// We don't want to bother with white spaces
-        $doc->preserveWhiteSpace = false;
-
-        $doc->load('Releves de notes/GINF1.xml');
-
-        $xpath = new DOMXPath($doc);
-
-// We start from the root element
-        $query = "//Eleve[@id='".$Eleve->code."']";
-        $note = $xpath->query($query);
-        foreach ($note as $n)
-            echo $n->nodeValue;
-
     }
 
 
@@ -232,13 +185,7 @@ class XmlController extends Controller
 
         $Emplois = $dom->createElement('EmploisDuTemps');
         $niveau = new DOMAttr('Niveau',"$Classe");
-        /*$xmlns = new DOMAttr('xmlns',"https://www.w3schools.com");
-        $xmlns_xsi = new DOMAttr('xmlns:xsi',"http://www.w3.org/2001/XMLSchema-instance");
-        $xsi_schemaLocation = new DOMAttr('xsi:schemaLocation',"https://www.w3schools.com/xml RELEVES.xsd");*/
         $Emplois->setAttributeNode($niveau);
-        /*$Eleves->setAttributeNode($xmlns);
-        $Eleves->setAttributeNode($xmlns_xsi);
-        $Eleves->setAttributeNode($xsi_schemaLocation);*/
 
         for($i=1;$i<2;$i++)
         {
@@ -276,6 +223,19 @@ class XmlController extends Controller
                     <a href='/dashboard'>Revenir au dashboard</a><br></center>";
     }
 
+
+    public function IsValidDTD($filePath)
+    {
+        $xml = new DOMDocument;
+        if($xml->load($filePath)){
+            if(!$xml->validate()){
+                File::delete($filePath);
+                return false;
+            }
+            return true;
+        }
+        return false;
+    }
 
     public function IsValidSchema($xmlPath,$xsdPath)
     {
