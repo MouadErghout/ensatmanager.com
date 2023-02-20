@@ -82,42 +82,120 @@
                                     <xsl:value-of select="count(Element_module)"/>
                                 </xsl:variable>
                                 <fo:table-row >
+                                    <xsl:if test="$number = 1">
                                         <fo:table-cell width="2.6cm" height="0.5cm" border-width="1px" border-style="solid" >
-                                                <fo:block 
-                                                    width="2.6cm"
-                                                    height="0.5cm" font-size="12px"
-                                                    color="#000000"
-                                                    text-align="center"
-                                                    padding-top="0.6cm"
-                                                    padding-bottom="0.6cm"
-                                                    border-width="1px" border-style="solid">
-                                                    <xsl:value-of select="@id"/>
-                                                </fo:block>
+                                            <fo:block 
+                                                width="2.6cm"
+                                                height="0.5cm" font-size="12px"
+                                                color="#000000"
+                                                text-align="center"
+                                                padding-top="0.09cm"
+                                                padding-bottom="0.09cm"
+                                                border-width="1px" border-style="solid">
+                                                <xsl:value-of select="@id"/>
+                                            </fo:block>
                                         </fo:table-cell>
-                                    <fo:table-cell width="5cm" height="0.5cm" border-width="1px" border-style="solid" >
-                                                <fo:block 
-                                                    width="5.2cm"
-                                                    height="0.5cm" font-size="12px"
-                                                    color="#000000"
-                                                    text-align="center"
-                                                    padding-top="0.6cm"
-                                                    padding-bottom="0.6cm"
-                                                    border-width="1px" border-style="solid">
-                                                    <xsl:value-of select="@designation"/>
-                                                </fo:block>
+                                        <fo:table-cell width="5cm" height="0.5cm" border-width="1px" border-style="solid" >
+                                            <fo:block 
+                                                width="5.2cm"
+                                                height="0.5cm" font-size="12px"
+                                                color="#000000"
+                                                text-align="center"
+                                                padding-top="0.09cm"
+                                                padding-bottom="0.09cm"
+                                                border-width="1px" border-style="solid">
+                                                <xsl:value-of select="@designation"/>
+                                            </fo:block>
                                         </fo:table-cell>   
-                                    <fo:table-cell width="1.9cm" height="0.5cm" border-width="1px" border-style="solid" >
-                                                <fo:block 
-                                                    width="1.9cm"
-                                                    height="0.5cm" font-size="12px"
-                                                    color="#000000"
-                                                    text-align="center"
-                                                    padding-top="0.6cm"
-                                                    padding-bottom="0.6cm"
-                                                    border-width="1px" border-style="solid">
-                                                    <xsl:value-of select="Note"/>
-                                                </fo:block>
+                                        <fo:table-cell width="1.9cm" height="0.5cm" border-width="1px" border-style="solid" >
+                                            <fo:block 
+                                                width="1.9cm"
+                                                height="0.5cm" font-size="12px"
+                                                color="#000000"
+                                                text-align="center"
+                                                padding-top="0.09cm"
+                                                padding-bottom="0.09cm"
+                                                border-width="1px" border-style="solid">
+                                                <xsl:value-of select="Note"/>
+                                            </fo:block>
                                         </fo:table-cell>
+                                    </xsl:if>
+                                    <xsl:if test="$number = 2">
+                                        <fo:table-cell width="2.6cm" height="1cm" border-width="1px" border-style="solid" >
+                                            <fo:block 
+                                                width="2.6cm"
+                                                height="1cm" font-size="12px"
+                                                color="#000000"
+                                                text-align="center"
+                                                padding-top="0.35cm"
+                                                padding-bottom="0.35cm"
+                                                border-width="1px" border-style="solid">
+                                                <xsl:value-of select="@id"/>
+                                            </fo:block>
+                                        </fo:table-cell>
+                                        <fo:table-cell width="5cm" height="1cm" border-width="1px" border-style="solid" >
+                                            <fo:block 
+                                                width="5.2cm"
+                                                height="1cm" font-size="12px"
+                                                color="#000000"
+                                                text-align="center"
+                                                padding-top="0.35cm"
+                                                padding-bottom="0.35cm"
+                                                border-width="1px" border-style="solid">
+                                                <xsl:value-of select="@designation"/>
+                                            </fo:block>
+                                        </fo:table-cell>   
+                                        <fo:table-cell width="1.9cm" height="1cm" border-width="1px" border-style="solid" >
+                                            <fo:block 
+                                                width="1.9cm"
+                                                height="1cm" font-size="12px"
+                                                color="#000000"
+                                                text-align="center"
+                                                padding-top="0.35cm"
+                                                padding-bottom="0.35cm"
+                                                border-width="1px" border-style="solid">
+                                                <xsl:value-of select="Note"/>
+                                            </fo:block>
+                                        </fo:table-cell>
+                                    </xsl:if>
+                                    <xsl:if test="$number = 3">
+                                        <fo:table-cell width="2.6cm" height="1.5cm" border-width="1px" border-style="solid" >
+                                            <fo:block 
+                                                width="2.6cm"
+                                                height="1.5cm" font-size="12px"
+                                                color="#000000"
+                                                text-align="center"
+                                                padding-top="0.62cm"
+                                                padding-bottom="0.62cm"
+                                                border-width="1px" border-style="solid">
+                                                <xsl:value-of select="@id"/>
+                                            </fo:block>
+                                        </fo:table-cell>
+                                        <fo:table-cell width="5cm" height="1.5cm" border-width="1px" border-style="solid" >
+                                            <fo:block 
+                                                width="5.2cm"
+                                                height="1.5cm" font-size="12px"
+                                                color="#000000"
+                                                text-align="center"
+                                                padding-top="0.62cm"
+                                                padding-bottom="0.62cm"
+                                                border-width="1px" border-style="solid">
+                                                <xsl:value-of select="@designation"/>
+                                            </fo:block>
+                                        </fo:table-cell>   
+                                        <fo:table-cell width="1.9cm" height="1.5cm" border-width="1px" border-style="solid" >
+                                            <fo:block 
+                                                width="1.9cm"
+                                                height="1.5cm" font-size="12px"
+                                                color="#000000"
+                                                text-align="center"
+                                                padding-top="0.62cm"
+                                                padding-bottom="0.62cm"
+                                                border-width="1px" border-style="solid">
+                                                <xsl:value-of select="Note"/>
+                                            </fo:block>
+                                        </fo:table-cell>
+                                    </xsl:if>
                                     <fo:table-cell width="5.5cm" height="0.5cm" border-width="1px" border-style="solid" >
                                         <xsl:for-each select="Element_module">
                                                 <fo:block 

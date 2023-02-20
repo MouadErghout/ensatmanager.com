@@ -10,31 +10,11 @@
                         <scenarioAssociation-array>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>GINF1.xml</String>
+                                    <String>LF54111.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>AFFICHAGE</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioTypes">
-                                    <list>
-                                        <String>XSL</String>
-                                    </list>
-                                </field>
-                                <field name="scenarioStorageLocations">
-                                    <list>
-                                        <Byte>2</Byte>
-                                    </list>
-                                </field>
-                            </scenarioAssociation>
-                            <scenarioAssociation>
-                                <field name="url">
-                                    <String>AP2.xml</String>
-                                </field>
-                                <field name="scenarioIds">
-                                    <list>
-                                        <String>AFFICHAGE</String>
+                                        <String>LF54111</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
@@ -70,11 +50,31 @@
                             </scenarioAssociation>
                             <scenarioAssociation>
                                 <field name="url">
-                                    <String>LF54111.xml</String>
+                                    <String>AP2.xml</String>
                                 </field>
                                 <field name="scenarioIds">
                                     <list>
-                                        <String>LF54111</String>
+                                        <String>AFFICHAGE</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioTypes">
+                                    <list>
+                                        <String>XSL</String>
+                                    </list>
+                                </field>
+                                <field name="scenarioStorageLocations">
+                                    <list>
+                                        <Byte>2</Byte>
+                                    </list>
+                                </field>
+                            </scenarioAssociation>
+                            <scenarioAssociation>
+                                <field name="url">
+                                    <String>GINF1.xml</String>
+                                </field>
+                                <field name="scenarioIds">
+                                    <list>
+                                        <String>AFFICHAGE</String>
                                     </list>
                                 </field>
                                 <field name="scenarioTypes">
